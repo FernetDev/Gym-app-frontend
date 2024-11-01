@@ -1,0 +1,25 @@
+<mat-drawer-container class="container">
+    <mat-drawer class="sidebar" mode="side" opened>
+        <div class="profile">
+            <div class="profile-pic">
+                <img matListItemAvatar src="https://as2.ftcdn.net/v2/jpg/00/96/60/99/1000_F_96609924_74UtjNBdDCKymIZcbxZJhJ3sO9pzIenF.jpg" alt="...">
+            </div>
+            <h3>Matis</h3>
+            <p>Matis&#64;gmail.com</p>     
+        </div>
+      <ul>
+        <mat-nav-list>
+        <li><a routerLink="/admin/principal" routerLinkActive="active"><i class="fa-solid fa-table-columns"></i> Principal/a></li> 
+          <li><a routerLink="/admin/admin" routerLinkActive="active"><i class="fa-regular fa-user"></i> Admin</a></li>
+          <li><a routerLink="/admin/register" routerLinkActive="active"><i class="fa-regular fa-pen-to-square"></i> Register</a></li>
+          <li><a routerLink="/admin/payments" routerLinkActive="active"><i class="fa-regular fa-credit-card"></i> Payments</a></li>
+          <li><a routerLink="/admin/profile" routerLinkActive="active"><i class="fa-regular fa-address-card"></i> Profile</a></li>
+          <a class="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        </mat-nav-list>
+      </ul>
+      
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
