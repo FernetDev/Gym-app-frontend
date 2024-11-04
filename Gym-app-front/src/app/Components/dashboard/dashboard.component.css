@@ -97,10 +97,37 @@ mat-drawer-container {
     color: #154360; 
     border-radius: 0.5rem 0 0 0.5rem;
     
+    
 }
   
 
   mat-drawer-content {
     width: 100%;
     background-color: #e0e0e1;
+  }
+
+
+  @media (max-width:1366px){
+    .sidebar{
+      font-size: 0.8rem;
+    }
+
+    .profile-pic{
+      width: 70px;
+      height: 70px;
+      margin: 0;
+    }
+
+    .instructor-name{
+      font-size: 1rem;
+      margin: 0px;
+    }
+
+    .instructor-email{
+      font-size: 0.9rem;
+    }
+
+    .ul{
+      margin: 0px;
+    }
   }
