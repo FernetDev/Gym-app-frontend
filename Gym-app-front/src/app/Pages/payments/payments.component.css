@@ -1,0 +1,42 @@
+.payments-container{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.header{
+    display: block;
+    width: 80%;
+    text-align: start;
+}
+
+.header h1{
+    font-family: "Poppins", serif;
+    color: #154360;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+mat-form-field{
+    margin: 1rem;    
+}
+
+mat-label{
+    color: black;
+}
+
+
+
+
+
+.form-container{
+    background-color: white;
+    padding: 1rem;
+    width: 500px;
+    height: 250px;
+
+}

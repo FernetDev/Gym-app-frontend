@@ -102,7 +102,7 @@ mat-drawer-container {
   
 
   mat-drawer-content {
-    width: 100%;
+    width: auto;
     background-color: #e0e0e1;
   }
 
