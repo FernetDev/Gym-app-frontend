@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { MatFormFieldModule, MatLabel } from "@angular/material/form-field";
-import { MatInput, MatInputModule } from '@angular/material/input';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [ MatFormFieldModule,MatInputModule,MatLabel,MatInput],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './payments.component.html',
-  styleUrl: './payments.component.css'
+  styleUrls: ['./payments.component.css']
 })
-export class PaymentsComponent {
-
-}
+export class PaymentsComponent { }

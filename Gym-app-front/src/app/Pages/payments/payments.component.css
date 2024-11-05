@@ -1,42 +1,92 @@
-.payments-container{
-    width: 85%;
-    height: 100%;
+.payments-container {
+    width: 80%;
+    height: 40%;
+    margin: 0 auto;
+    margin-top: 10rem;
+    font-family: Arial, sans-serif;
+}
+
+form{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #154360;
+    margin-bottom: 20px;
+    font-family: "Poppins", serif;
+}
+
+
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-group {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
 }
 
-.header{
-    display: block;
-    width: 80%;
-    text-align: start;
-}
-
-.header h1{
+.form-group label {
     font-family: "Poppins", serif;
-    color: #154360;
-    font-size: 2.2rem;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
-mat-form-field{
-    margin: 1rem;    
+.form-group input {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background-color: #E9E9E9;
+    font-size: 14px;
 }
 
-mat-label{
-    color: black;
+
+.form-buttons {
+    display: flex;
+    margin-bottom: 1%;
+    gap: 10px;
+}
+
+.save-button {
+    background-color:#6399BC;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: transparent;
+    color: #6399BC;
+    border: 2px solid #6399BC;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-button:hover, .cancel-button:hover {
+    opacity: 0.9;
 }
 
 
-
-
-
-.form-container{
-    background-color: white;
-    padding: 1rem;
-    width: 500px;
-    height: 250px;
-
+mat-datepicker-toggle{
+    position: relative;
+    right: 1px;
+    margin: 0;
+    width: 0;
+    
 }
