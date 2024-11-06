@@ -38,13 +38,13 @@ getFilteredMembers() {
   return this.members.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1 ) * this.pageSize)}
 }
 
-setPageSize(value: string | undefined ): void {
-  if (!value) return;
+// setPageSize(value: string | undefined ): void {
+//   if (!value) return;
 
-  if (value === 'See All'){
-    this.pageSize = this.members.length;
-  } else {
-    this.pageSize = parseInt(value, 10);
-  }
-  this.pageIndex = 0;
-}
+//   if (value === 'See All'){
+//     this.pageSize = this.members.length;
+//   } else {
+//     this.pageSize = parseInt(value, 10);
+//   }
+//   this.pageIndex = 0;
+// }
