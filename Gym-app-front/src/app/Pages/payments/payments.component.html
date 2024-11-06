@@ -13,7 +13,7 @@
                 <label for="price">Price</label>
                 <input type="text" id="price" formControlName="price" placeholder="Price">
                 <div class="error" *ngIf="myForm.get('price')?.invalid && myForm.get('price')?.touched">Price is required</div>
-                <div class="error" *ngIf="myForm.get('price')?.errors?.['pattern']">Solo se aceptan números</div>
+                <div class="error" *ngIf="myForm.get('price')?.errors?.['pattern']">Only numbers are allowed</div>
             </div>
         </div>
         <div class="form-row">
