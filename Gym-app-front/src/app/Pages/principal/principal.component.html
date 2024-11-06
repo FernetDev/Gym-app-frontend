@@ -5,17 +5,16 @@
         <div class="options-bar">
             <div class="show-options">
                 <label for="show-count">Show:</label>
-                <select id="show-count">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="all">See All</option>
+                <select id="show-count" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option [value]="'See All'">See All</option>
                 </select>
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search member...">
+                <input type="text" placeholder="Search member..." [(ngModel)]="searchTerm">
             </div>
         </div>
-
         <div class="members-header">
             <span><strong>Name</strong></span>
             <span><strong>State</strong></span>
@@ -23,26 +22,18 @@
             <span><strong>Date expiry</strong></span>
             <span><strong>Actions</strong></span>
         </div>
-
         <ul class="members-list">
-            <li class="member">
+            <li class="member" *ngFor="let member of getFilteredMembers() | slice: (pageIndex * pageSize)">
                 <div class="member-info">
-                    <span>Baltazar Sanchez</span>
-                    <span>Active</span>
-                    <span>30/10/2024</span>
-                    <span>30/11/2025</span>
+                    <span> {{member.name}} </span>
+                    <span> {{member.state}} </span>
+                    <span> {{member.datePaid}} </span>
+                    <span> {{member.dateExpiry}} </span>
                     <button>Edit</button>
                 </div>
             </li>
-            <li class="member">
-                <div class="member-info">
-                    <span>Matias Ramirez</span>
-                    <span>Active</span>
-                    <span>05/02/2024</span>
-                    <span>05/03/2025</span>
-                    <button>Edit</button>
-                </div>
-            </li>
+           
+                  
         </ul>
     </div>
 </div>
