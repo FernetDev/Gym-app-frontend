@@ -13,9 +13,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent {
-setPageSize($event: any) {
-throw new Error('Method not implemented.');
-}
 
 //Test
 members = Array.from({ length: 25 }, (_, i)  =>
@@ -26,7 +23,7 @@ members = Array.from({ length: 25 }, (_, i)  =>
             dateExpiry: `30/11/202${(i % 3 + 1).toString()}`,
           }));
 
-pageSize: number = 10; // Nro de miembros por pagina
+pageSize: number = 5; // Nro de miembros por pagina
 pageIndex: number = 0; // Nro de pagina inicial
 searchTerm: string = ''; 
 
@@ -35,16 +32,16 @@ changePage(event: any) {
 }
 
 getFilteredMembers() {
-  return this.members.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1 ) * this.pageSize)}
+  const filtered = this.members.filter(member =>
+    member.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+  const startIndex = this.pageIndex * this.pageSize;
+  const endIndex = startIndex + this.pageSize;
+  return filtered.slice(startIndex, endIndex)
 }
 
-// setPageSize(value: string | undefined ): void {
-//   if (!value) return;
-
-//   if (value === 'See All'){
-//     this.pageSize = this.members.length;
-//   } else {
-//     this.pageSize = parseInt(value, 10);
-//   }
-//   this.pageIndex = 0;
-// }
+setPageSize(value: string | undefined ): void {
+  if (!value) return;
+  this.pageSize = value === 'See All' ? this.members.length : parseInt(value, 10);
+  this.pageIndex = 0;
+}}

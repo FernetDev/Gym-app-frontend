@@ -11,9 +11,11 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    max-width: 800px;
+    max-width: 100%;
     width: 100%;
+    height: auto;
 }
+
 
 .members-box h2 {
     font-family: "Poppins", sans-serif;
@@ -82,6 +84,8 @@
     list-style-type: none; /* Elimina los puntos de la lista */
     padding: 0;
     margin: 0;
+    max-height: 290px;
+    overflow-y: auto;
 }
 
 .member {
