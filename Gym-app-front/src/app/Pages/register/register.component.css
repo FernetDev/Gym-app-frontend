@@ -3,7 +3,9 @@
     height: 70%;
     display:table;
     margin: auto;
-
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .bienvenida-conteiner{
@@ -38,6 +40,7 @@ h2{
     margin-bottom: 15px;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .group-registro{
     align-items: center;

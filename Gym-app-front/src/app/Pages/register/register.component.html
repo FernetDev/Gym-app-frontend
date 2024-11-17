@@ -6,27 +6,27 @@
     <div class="registro-conteiner">
         <div class="registro">
             <div class="group-registro">
-                <label>name of member</label>
+                <label>Name of Member</label>
                 <input matInput formControlName="name">
             </div>
             <div class="group-registro">
-                <label>enter your email</label>
+                <label>Email</label>
                 <input matInput formControlName="email">
     
             </div>
             <div class="group-registro">
-                <label>price</label>
+                <label>Price</label>
                 <input matInput formControlName="price">
             </div>
             <div class="group-registro">
-                <label>data of join</label>
+                <label>Data of Join</label>
                 <input matInput [matDatepicker]="picker" formControlName="dateOfJoin">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 
             </div>
             <div class="group-registro">
-                <label>contact number</label>
+                <label>Contact Number</label>
                 <input matInput formControlName="contactNo">
             </div>
             <div class="botones-registro">
