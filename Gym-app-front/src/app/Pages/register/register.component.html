@@ -5,6 +5,7 @@
     </div>
     <div class="registro-conteiner">
         <div class="registro">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="group-registro">
                 <label>Name of Member</label>
                 <input matInput formControlName="name">
@@ -33,6 +34,7 @@
                 <button mat-raised-button type="submit" class="button-registro">Register</button>
                 <button mat-button type="button" class="button-cancelar">Cancel</button>
             </div>
+        </form>
         </div>
         
     </div>
