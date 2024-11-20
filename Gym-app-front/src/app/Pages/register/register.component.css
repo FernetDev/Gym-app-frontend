@@ -1,6 +1,6 @@
 .conteiner-general{
     width: 80%;
-    height: 70%;
+    height: 90%;
     display:table;
     margin: auto;
     font-family: "Poppins", sans-serif;
@@ -14,29 +14,25 @@
     flex-direction: column;
     margin-top: 50px;
 }
-h3{
-    color:rgba(222, 186, 59, 1);
-    font-size: 32px;
-}
-h2{
+h1{
     color: rgba(26, 19, 99, 1);
+    font-weight: bold;
     font-size: 40px;
+    font-family: "Poppins", sans-serif;
 }
 .registro-conteiner {
     border: 2px solid;
     background-color: white;
     padding: 5px;
-    width: 500px;
-    height: 300px;
+    width: 550px;
     margin: auto;
-    display: flex;
     border: none;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
 .registro{
     display: flex;
-    gap: 20px;
+    gap: 18px;
     margin-bottom: 15px;
     align-items: center;
     flex-wrap: wrap;
@@ -60,17 +56,43 @@ input {
     justify-content: flex-end;
     flex-direction: row;
     align-items: flex-end;
-    gap: 15px;
+    gap: 10px;
 }
 
 button.button-registro.mdc-button.mdc-button--raised.mat-mdc-raised-button {
     background-color: rgba(21, 67, 96, 1);
     color: #fff;
-    width: 110px;
+    width: 100px;
     height: 30px;
 }
+/* Estilo del botón Registro cuando está deshabilitado */
+button.button-registro:disabled {
+    background-color: rgba(21, 67, 96, 1); 
+    color: #fff;
+    opacity: 0.6; 
+    cursor: not-allowed; 
+  }
 button.button-cancelar.mdc-button.mat-mdc-button {
     border: 1px solid rgba(21, 67, 96, 1);
-    width: 110px;
+    width: 100px;
     height: 30px;
 }
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Contenedor del input con ícono data of join */
+.input-container {
+    position: relative;
+}
+.icon-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: rgba(21, 67, 96, 1);
+}
+  
