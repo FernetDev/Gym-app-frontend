@@ -99,3 +99,7 @@ mat-datepicker-toggle{
     pointer-events: none;         
     opacity: 0.6;                 
   }
+
+.error{
+    color: red;
+}
