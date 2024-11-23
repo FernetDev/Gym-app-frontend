@@ -1,4 +1,11 @@
 /* Profile container */
+.profile-section{
+        width: 80%;
+        height: 40%;
+        margin: 0 auto;
+        margin-top: 10rem;
+        font-family: Arial, sans-serif;
+}
 .profile-container {
     background: #ffffff;
     padding: 20px; /* Aumenté el padding para asegurar que haya más espacio dentro del contenedor */

@@ -1,9 +1,9 @@
 .main-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    width: 80%;
+    height: 40%;
+    margin: 0 auto;
+    margin-top: 10rem;
+    font-family: Arial, sans-serif;
 }
 
 .members-box {

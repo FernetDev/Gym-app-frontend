@@ -1,9 +1,9 @@
 .conteiner-general{
     width: 80%;
-    height: 90%;
-    display:table;
-    margin: auto;
-    font-family: "Poppins", sans-serif;
+    height: 70%;
+    margin: 0 auto;
+    margin-top: 10rem;
+    font-family: Arial, sans-serif;
     font-weight: 700;
     font-size: 14px;
 }
