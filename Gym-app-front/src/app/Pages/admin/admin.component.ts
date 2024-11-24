@@ -3,11 +3,6 @@ import { AccesoService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../../Interfaces/usuario';
-  //Angular Material
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -15,7 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule,ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
