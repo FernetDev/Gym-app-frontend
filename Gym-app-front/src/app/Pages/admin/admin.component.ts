@@ -56,6 +56,8 @@ export class AdminComponent {
     })
   }
 
+  
+
   volver(){
     this.router.navigate([''])
   }
