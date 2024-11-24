@@ -21,7 +21,7 @@ export class AdminComponent {
       this.myForm = this.fb.group({
         name: ['', [Validators.required]],
         password: ['', [Validators.required,]],
-        email: ['', [Validators.required]],
+        email: ['', [Validators.required,Validators.email]],
       }, );
     }
   
