@@ -5,9 +5,12 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { AdminComponent } from './Pages/admin/admin.component';
 import { PaymentsComponent } from './Pages/payments/payments.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
+import { LoginComponent } from './Components/login/login.component';
+import { authGuard } from './Guards/auth.guard';
 
 export const routes: Routes = [
-    { path: 'dashboard', component: DashboardComponent, children: [
+    { path: '', component: LoginComponent, pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] , children: [
         { path: 'principal', component: PrincipalComponent },
         { path: 'admin', component: AdminComponent },
         { path: 'register', component: RegisterComponent },

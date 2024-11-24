@@ -4,7 +4,6 @@ import { AccesoService } from '../Services/auth.service';
 import { catchError, map, of } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  debugger;
   const token = localStorage.getItem("token") || "";
   const router = inject(Router);
 
