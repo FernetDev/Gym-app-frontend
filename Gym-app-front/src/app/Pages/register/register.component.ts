@@ -74,11 +74,11 @@ onSubmit() {
 
 
     var newMember: Miembro = {
-      NombreCompleto :this.myForm.value.nombreCompleto,
-      Email: this.myForm.value.email,
-      ContactNro: this.myForm.value.contactNro,
-      IdPerfil: this.myForm.value.idPerfil,
+      NombreCompleto :this.myForm.value.NombreCompleto,
+      IdPerfil: this.myForm.value.IdPerfil,
       FechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+      Email: this.myForm.value.Email,
+      ContactNro: this.myForm.value.ContactNro
     };
     
     console.log('Formulario enviado: ', this.myForm.value);

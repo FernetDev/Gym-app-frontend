@@ -15,7 +15,7 @@ export class AddMemberService {
 
 
   registrarCliente(objeto:Miembro):Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}Cliente/guardar`, objeto)
+    return this.http.post<any>(`${this.baseUrl}Cliente/guardar`, objeto,)
   }
 
 }
