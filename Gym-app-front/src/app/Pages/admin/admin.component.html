@@ -2,7 +2,7 @@
     <div class="header">
         <h1>New Admin</h1>
     </div>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" action="">
+    <form  [formGroup]="formRegistro" action="">
         <div class="form-row">
             <div class="form-group">
                 <label for="name">Name of Admin</label>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="form-buttons">
-            <button type="submit" [class.disabled]="myForm.invalid" class="save-button">Save</button>
+            <button type="submit" class="save-button" (click)="registrarse()">Save</button>
             <button type="button" class="cancel-button">Cancel</button>
         </div>
     </form>

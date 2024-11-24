@@ -1,9 +1,16 @@
-import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder,Validators, FormGroup } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { AccesoService } from '../../Services/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Usuario } from '../../Interfaces/usuario';
+  //Angular Material
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
+
+
 
 @Component({
   selector: 'app-admin',
@@ -13,23 +20,43 @@ import { FormBuilder,Validators, FormGroup } from '@angular/forms';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-  myForm! : FormGroup;
+  private accesoService = inject(AccesoService);
+  private router = inject(Router);
+  public myForm = inject(FormBuilder);
+  
+  //Formulario para Iniciar
+  public formRegistro: FormGroup = this.myForm.group({
+    nombre:['',Validators.required],
+    correo:['',Validators.required],
+    clave:['',Validators.required]
+  });
 
-  constructor(private fb: FormBuilder){}
-  
-    ngOnInit(): void {
-      this.myForm = this.fb.group({
-        name: ['', [Validators.required]],
-        password: ['', [Validators.required,]],
-        email: ['', [Validators.required,Validators.email]],
-      }, );
+  //Metodo para Registrarse
+  registrarse(){
+    if(this.formRegistro.invalid){
+      console.log("invalid")
     }
-  
-    onSubmit(){
-      if(this.myForm.valid){
-        console.log("Form submited", this.myForm.value);
-      }else{
-        console.log("invalid", this.myForm.value);
-      }
+
+    const objeto:Usuario = {
+      nombre: this.formRegistro.value.nombre,
+      correo: this.formRegistro.value.correo,
+      clave: this.formRegistro.value.clave
     }
+
+      this.accesoService.registrarse(objeto).subscribe({
+        next: (data) =>{
+          if(data.isSuccess){
+            this.router.navigate([''])
+          }else{
+            alert("No se pudo Registrar")
+          }
+        }, error:(error)=>{
+          console.log(error.message);
+        }
+    })
+  }
+
+  volver(){
+    this.router.navigate([''])
+  }
 }
