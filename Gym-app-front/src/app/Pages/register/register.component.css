@@ -1,6 +1,6 @@
 .conteiner-general{
     width: 80%;
-    height: 70%;
+    height: 50%;
     margin: 0 auto;
     margin-top: 10rem;
     font-family: Arial, sans-serif;
@@ -8,18 +8,14 @@
     font-size: 14px;
 }
 
-.bienvenida-conteiner{
-    margin: 0px 40px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-}
 h1{
-    color: rgba(26, 19, 99, 1);
+    font-size: 32px;
     font-weight: bold;
-    font-size: 40px;
-    font-family: "Poppins", sans-serif;
+    color: #154360;
+    margin-bottom: 20px;
+    font-family: "Poppins", serif;
 }
+
 .registro-conteiner {
     border: 2px solid;
     background-color: white;
@@ -30,52 +26,72 @@ h1{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
-.registro{
+
+form{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.form-row{
     display: flex;
-    gap: 18px;
+    gap: 20px;
     margin-bottom: 15px;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
+
+
 .group-registro{
-    align-items: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
-input {
-    width: 100%;
-    height: 33px;
-    border: none;
-    background-color: rgba(233, 233, 233, 1);
-    border-radius: 12px;
+
+.group-registro-icon{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
+
+
+
+input{
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background-color: #E9E9E9;
+    font-size: 14px;
+
+}
+
 
 .botones-registro {
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    align-items: flex-end;
     gap: 10px;
+    margin-bottom: 2%;
 }
 
-button.button-registro.mdc-button.mdc-button--raised.mat-mdc-raised-button {
-    background-color: rgba(21, 67, 96, 1);
-    color: #fff;
-    width: 100px;
-    height: 30px;
+.save-button {
+    background-color:#6399BC;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
-/* Estilo del botón Registro cuando está deshabilitado */
-button.button-registro:disabled {
-    background-color: rgba(21, 67, 96, 1); 
-    color: #fff;
-    opacity: 0.6; 
-    cursor: not-allowed; 
-  }
-button.button-cancelar.mdc-button.mat-mdc-button {
-    border: 1px solid rgba(21, 67, 96, 1);
-    width: 100px;
-    height: 30px;
+
+.cancel-button {
+    background-color: transparent;
+    color: #6399BC;
+    border: 2px solid #6399BC;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
 .error-message {
     color: red;
@@ -83,16 +99,7 @@ button.button-cancelar.mdc-button.mat-mdc-button {
     margin-top: 5px;
 }
 
+
 /* Contenedor del input con ícono data of join */
-.input-container {
-    position: relative;
-}
-.icon-button {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: rgba(21, 67, 96, 1);
-}
-  
+
+

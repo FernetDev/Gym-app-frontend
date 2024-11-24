@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,6 +7,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Miembro } from '../../Interfaces/miembro';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-register',
@@ -18,12 +20,21 @@ import { Miembro } from '../../Interfaces/miembro';
      MatNativeDateModule,
      MatButtonModule,
      NgIf,
+     MatAutocompleteModule,
+     NgFor,
+     
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
   myForm! : FormGroup;
+  options = [
+    { label: 'Básico', value: 1 },
+    { label: 'Personalizado', value: 2 },
+    { label: 'Powerlifter', value: 3 }
+  ];
+  
 
 constructor(private fb: FormBuilder){}
 ngOnInit(): void {

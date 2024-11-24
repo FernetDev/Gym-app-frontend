@@ -1,70 +1,70 @@
 <div class="conteiner-general">
-    <div class="bienvenida-conteiner">
-        <h1>Register </h1>
+  <div class="bienvenida-conteiner">
+    <h1>Register </h1>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="registro">
+    <div class="form-row">
+
+
+      <div class="group-registro">
+        <label>Name of Member</label>
+        <input matInput formControlName="nombreCompleto">
+        <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched"
+          class="error-message">
+          <small *ngIf="myForm.get('nombreCompleto')?.hasError('required')">Name is required.</small>
+          <small *ngIf="myForm.get('nombreCompleto')?.hasError('pattern')">Only letters and spaces are allowed.</small>
+        </div>
+      </div>
+
+      <div class="group-registro">
+        <label>Email</label>
+        <input matInput formControlName="email">
+        <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
+          <small *ngIf="myForm.get('email')?.hasError('required')">Email is required.</small>
+          <small *ngIf="myForm.get('email')?.hasError('email')">Enter a valid email.</small>
+        </div>
+      </div>
     </div>
-    <div class="registro-conteiner">
-            <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="registro">
-                <div class="group-registro">
-                    <label>Name of Member</label>
-                    <input matInput formControlName="name">
-                    <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('nombreCompleto')?.hasError('required')">Name is required.</small>
-                      <small *ngIf="myForm.get('nombreCompleto')?.hasError('pattern')">Only letters and spaces are allowed.</small>
-                    </div>
-                  </div>
-                  
-                  <div class="group-registro">
-                    <label>Email</label>
-                    <input matInput formControlName="email">
-                    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('email')?.hasError('required')">Email is required.</small>
-                      <small *ngIf="myForm.get('email')?.hasError('email')">Enter a valid email.</small>
-                    </div>
-                  </div>
-                  
-                  <div class="group-registro">
-                    <label>Profile</label>
-                    <input matInput formControlName="price">
-                    <div *ngIf="myForm.get('profile')?.invalid && myForm.get('profile')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('profile')?.hasError('required')">Price is required.</small>
-                      <small *ngIf="myForm.get('profile')?.hasError('pattern')">Only numbers are allowed.</small>
-                    </div>
-                  </div>
-                  
-                  <div class="group-registro">
-                    <label>Data of Join</label>
-                    <div class="input-container">
-                      <input matInput [matDatepicker]="picker" formControlName="fechaIngreso" class="input-with-icon">
-                      <mat-datepicker-toggle matSuffix [for]="picker" class="icon-button"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </div>
-                    <div *ngIf="myForm.get('dateOfJoin')?.invalid && myForm.get('dateOfJoin')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('dateOfJoin')?.hasError('required')">Data of Join is required.</small>
-                    </div>
-                  </div>
-                  
-                  
-                <div class="group-registro">
-                    <label>Contact Number</label>
-                    <input matInput formControlName="contactNro">
-                    <div *ngIf="myForm.get('contactNro')?.invalid && myForm.get('contactNro')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('contactNro')?.hasError('required')">Contact number is required.</small>
-                      <small *ngIf="myForm.get('contactNro')?.hasError('pattern')">Contact number must be 10 digits.</small>
-                    </div>
-                  </div> 
-                <div class="botones-registro">
-                    <button 
-                      mat-raised-button 
-                      type="submit" 
-                      class="button-registro" 
-                      [disabled]="myForm.invalid">Register</button>
-                      <button 
-                      mat-button 
-                      type="button" 
-                      class="button-cancelar" 
-                      (click)="onCancel()">Cancel</button>
-                  </div>
-                  
-            </form>      
+    <div class="form-row">
+
+
+      <div class="group-registro">
+        <label>Profile</label>
+        <input type="text" placeholder="Choose plan" aria-label="Number" matInput [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option.label">
+            {{ option.label }}
+          </mat-option>
+
+        </mat-autocomplete>
+      </div>
+
+
+        <div class="group-registro">
+          <label>Contact Number</label>
+          <input matInput formControlName="contactNro">
+          <div *ngIf="myForm.get('contactNro')?.invalid && myForm.get('contactNro')?.touched" class="error-message">
+            <small *ngIf="myForm.get('contactNro')?.hasError('required')">Contact number is required.</small>
+            <small *ngIf="myForm.get('contactNro')?.hasError('pattern')">Contact number must be 10 digits.</small>
+          </div>
+        </div>
     </div>
+            
+
+
+
+
+    <div class="form-row">
+      <div class="group-registro-icon">
+          <label for="date">Date of Join</label>
+          <input formControlName="fechaIngreso" id="date" matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <div class="botones-registro">
+          <button type="submit"  class="save-button">Save</button>
+          <button type="button" class="cancel-button">Cancel</button>
+      </div>
+  </div>
+  </form>
 </div>

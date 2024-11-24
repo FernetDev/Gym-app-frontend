@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-principal',
   standalone: true,
   imports: [
-    MatPaginatorModule, NgFor, NgIf, FormsModule, CommonModule
+    MatPaginatorModule, NgFor, FormsModule, CommonModule
   ],
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
