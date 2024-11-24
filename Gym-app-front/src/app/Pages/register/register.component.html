@@ -7,9 +7,9 @@
                 <div class="group-registro">
                     <label>Name of Member</label>
                     <input matInput formControlName="name">
-                    <div *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('name')?.hasError('required')">Name is required.</small>
-                      <small *ngIf="myForm.get('name')?.hasError('pattern')">Only letters and spaces are allowed.</small>
+                    <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched" class="error-message">
+                      <small *ngIf="myForm.get('nombreCompleto')?.hasError('required')">Name is required.</small>
+                      <small *ngIf="myForm.get('nombreCompleto')?.hasError('pattern')">Only letters and spaces are allowed.</small>
                     </div>
                   </div>
                   
@@ -23,18 +23,18 @@
                   </div>
                   
                   <div class="group-registro">
-                    <label>Price</label>
+                    <label>Profile</label>
                     <input matInput formControlName="price">
-                    <div *ngIf="myForm.get('price')?.invalid && myForm.get('price')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('price')?.hasError('required')">Price is required.</small>
-                      <small *ngIf="myForm.get('price')?.hasError('pattern')">Only numbers are allowed.</small>
+                    <div *ngIf="myForm.get('profile')?.invalid && myForm.get('profile')?.touched" class="error-message">
+                      <small *ngIf="myForm.get('profile')?.hasError('required')">Price is required.</small>
+                      <small *ngIf="myForm.get('profile')?.hasError('pattern')">Only numbers are allowed.</small>
                     </div>
                   </div>
                   
                   <div class="group-registro">
                     <label>Data of Join</label>
                     <div class="input-container">
-                      <input matInput [matDatepicker]="picker" formControlName="dateOfJoin" class="input-with-icon">
+                      <input matInput [matDatepicker]="picker" formControlName="fechaIngreso" class="input-with-icon">
                       <mat-datepicker-toggle matSuffix [for]="picker" class="icon-button"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </div>
@@ -46,10 +46,10 @@
                   
                 <div class="group-registro">
                     <label>Contact Number</label>
-                    <input matInput formControlName="contactNo">
-                    <div *ngIf="myForm.get('contactNo')?.invalid && myForm.get('contactNo')?.touched" class="error-message">
-                      <small *ngIf="myForm.get('contactNo')?.hasError('required')">Contact number is required.</small>
-                      <small *ngIf="myForm.get('contactNo')?.hasError('pattern')">Contact number must be 10 digits.</small>
+                    <input matInput formControlName="contactNro">
+                    <div *ngIf="myForm.get('contactNro')?.invalid && myForm.get('contactNro')?.touched" class="error-message">
+                      <small *ngIf="myForm.get('contactNro')?.hasError('required')">Contact number is required.</small>
+                      <small *ngIf="myForm.get('contactNro')?.hasError('pattern')">Contact number must be 10 digits.</small>
                     </div>
                   </div> 
                 <div class="botones-registro">

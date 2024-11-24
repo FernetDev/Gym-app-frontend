@@ -6,6 +6,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Miembro } from '../../Interfaces/miembro';
 
 @Component({
   selector: 'app-register',
@@ -27,16 +28,13 @@ export class RegisterComponent {
 constructor(private fb: FormBuilder){}
 ngOnInit(): void {
   this.myForm = this.fb.group({
-    name: [
+    nombreCompleto: [
       '', 
       [Validators.required, Validators.pattern('^[a-zA-Z ]+$')] // Solo letras y espacios
     ],
-    price: [
-      '', 
-      [Validators.required, Validators.pattern('^[0-9]+$')] // Solo números
-    ],
-    dateOfJoin: ['', [Validators.required]],
-    contactNo: [
+
+    fechaIngreso: ['', [Validators.required]],
+    contactNro: [
       '',
       [Validators.required, Validators.pattern('^[0-9]{10}$')] // Solo números y de longitud 10
     ],
@@ -44,17 +42,33 @@ ngOnInit(): void {
       '', 
       [Validators.required, Validators.email] // Validación de formato de email
     ],
+    idPerfil: [
+      '', 
+      [Validators.required, ] 
+    ],
   });
 }
 
+
+
 onSubmit() {
   if (this.myForm.valid) {
-    console.log("Form submitted", this.myForm.value);
+    const objeto:Miembro = {
+      nombreCompleto:this.myForm.value.name ,
+      email: this.myForm.value.email,
+      contactNro: this.myForm.value.contactNro,
+      idPerfil:this.myForm.value.idPerfil ,
+      fechaIngreso: this.myForm.value.FechaIngreso,
+    }
+
   } else {
     console.log("Invalid form", this.myForm.value);
     this.myForm.markAllAsTouched(); // Marca todos los campos como tocados para mostrar los errores
   }
 }
+
+
+
 //metodo para resetear el form
 onCancel(): void {
   this.myForm.reset(); // Restablece todos los campos del formulario
