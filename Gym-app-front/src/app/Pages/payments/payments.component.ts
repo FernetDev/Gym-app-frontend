@@ -29,7 +29,7 @@ constructor(private fb: FormBuilder){}
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       fechaIngreso: ['', [Validators.required,]],
-      date: ['', [Validators.required]],
+      idPerfil: ['', [Validators.required]],
     }, );
   }
 

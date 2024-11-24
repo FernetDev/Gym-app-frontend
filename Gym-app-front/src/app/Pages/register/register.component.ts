@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject  } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Miembro } from '../../Interfaces/miembro';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { AddMemberService } from '../../Services/add-member.service';
 
 @Component({
   selector: 'app-register',
@@ -29,6 +29,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 })
 export class RegisterComponent {
   myForm! : FormGroup;
+  private addMember = inject(AddMemberService);
+
+
   options = [
     { label: 'Básico', value: 1 },
     { label: 'Personalizado', value: 2 },
@@ -39,21 +42,21 @@ export class RegisterComponent {
 constructor(private fb: FormBuilder){}
 ngOnInit(): void {
   this.myForm = this.fb.group({
-    nombreCompleto: [
+    NombreCompleto: [
       '', 
       [Validators.required, Validators.pattern('^[a-zA-Z ]+$')] // Solo letras y espacios
     ],
 
-    fechaIngreso: ['', [Validators.required]],
-    contactNro: [
+    FechaIngreso: [new Date(), [Validators.required]],
+    ContactNro: [
       '',
       [Validators.required, Validators.pattern('^[0-9]{10}$')] // Solo números y de longitud 10
     ],
-    email: [
+    Email: [
       '', 
       [Validators.required, Validators.email] // Validación de formato de email
     ],
-    idPerfil: [
+    IdPerfil: [
       '', 
       [Validators.required, ] 
     ],
@@ -61,22 +64,33 @@ ngOnInit(): void {
 }
 
 
-
 onSubmit() {
-  if (this.myForm.valid) {
-    const objeto:Miembro = {
-      nombreCompleto:this.myForm.value.name ,
-      email: this.myForm.value.email,
-      contactNro: this.myForm.value.contactNro,
-      idPerfil:this.myForm.value.idPerfil ,
-      fechaIngreso: this.myForm.value.FechaIngreso,
-    }
 
-  } else {
-    console.log("Invalid form", this.myForm.value);
-    this.myForm.markAllAsTouched(); // Marca todos los campos como tocados para mostrar los errores
+
+  if(this.myForm.valid) {
+
+
+    
+
+
+    var newMember: Miembro = {
+      NombreCompleto :this.myForm.value.nombreCompleto,
+      Email: this.myForm.value.email,
+      ContactNro: this.myForm.value.contactNro,
+      IdPerfil: this.myForm.value.idPerfil,
+      FechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+    };
+    
+    console.log('Formulario enviado: ', this.myForm.value);
+    this.addMember.registrarCliente(newMember)
+      .subscribe(
+        (data: any) => {
+          console.log('Miembro registrado ', data);
+        }
+      );
   }
 }
+
 
 
 

@@ -1,8 +1,8 @@
 export interface Miembro {
-    nombreCompleto :string,
-    email: string,
-    contactNro: string,
-    idPerfil: string,
-    fechaIngreso: Date,
+    NombreCompleto :string,
+    Email: string,
+    ContactNro: number,
+    IdPerfil: number,
+    FechaIngreso: string,
 
 }

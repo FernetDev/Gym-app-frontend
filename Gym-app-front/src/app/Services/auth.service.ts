@@ -21,6 +21,9 @@ export class AccesoService {
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Registrarse`, objeto)
   }
 
+  registrarCliente(objeto:Usuario):Observable<ResponseAcceso>{
+    return this.http.post<ResponseAcceso>(`${this.baseUrl}Cliente/guardar`, objeto)
+  }
 
   login(objeto:Login):Observable<ResponseAcceso>{
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Login`, objeto)
