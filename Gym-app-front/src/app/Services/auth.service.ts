@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ResponseAcceso } from '../Interfaces/response-acceso';
 import { Usuario } from '../Interfaces/usuario';
 import { Login } from '../Interfaces/login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AccesoService {
   private http = inject(HttpClient);
   private baseUrl:string = appsettings.apiUrl;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
 // Conexion Registro y Login
   registrarse(objeto:Usuario):Observable<ResponseAcceso>{
@@ -29,7 +30,13 @@ export class AccesoService {
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Login`, objeto)
   }
 
-  
+  logout() {
+    // Elimina el token del almacenamiento (localStorage o sessionStorage)
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    // Redirige a la página de login
+    this.router.navigate(['/login']);
+  }
 
   
   //Validacion del Token

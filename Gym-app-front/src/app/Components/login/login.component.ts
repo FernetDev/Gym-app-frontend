@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AccesoService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../../Interfaces/login';
+import { ResponseAcceso } from '../../Interfaces/response-acceso';
 //importo lo que voy a usar en la logica
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 //Angular Material
@@ -38,20 +39,23 @@ export class LoginComponent {
     }
 
     this.accesoService.login(objeto).subscribe({
-      next:(data) =>{
-        if(data.isSuccess){
-          localStorage.setItem("token", data.token)
-          this.router.navigate(['/dashboard']) //"inicio" debe ser igual a lo mapeado en approutes.ts
-        }else{
-          alert("Las Credenciales son Incorrectas.")
+      next: (data: ResponseAcceso) => { // Usa la interfaz correcta
+        if (data.isSuccess) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user)); // Aquí se almacena correctamente el user
+
+    
+          this.router.navigate(['/dashboard']); // Redirige al dashboard
+        } else {
+          alert("Las Credenciales son Incorrectas.");
         }
       },
-      //Esto por si tira error
       error: (error) => {
         console.error('Error en la solicitud de login:', error); // Mejor manejo de errores
         alert("Error al intentar iniciar sesión.");
       }
     });
+    
   }
 
   //Metodo para Registro

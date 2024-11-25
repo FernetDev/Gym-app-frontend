@@ -4,8 +4,8 @@
         <div class="profile-pic">
           <img src="https://as2.ftcdn.net/v2/jpg/00/96/60/99/1000_F_96609924_74UtjNBdDCKymIZcbxZJhJ3sO9pzIenF.jpg" alt="Instructor Profile">
         </div>
-        <h3 class="instructor-name">Matias Ramirez</h3>
-        <p class="instructor-email">Matiasramirez&#64;gmail.com</p>
+        <h3 *ngIf="user" class="instructor-name">{{ user.name }}</h3>
+        <p *ngIf="user" class="instructor-email">{{user.email}}</p>
       </div>
      
       <ul>
@@ -15,7 +15,7 @@
           <li><a routerLink="/dashboard/register" routerLinkActive="active"><i class="fa-regular fa-pen-to-square"></i> Register</a></li>
           <li><a routerLink="/dashboard/payments" routerLinkActive="active"><i class="fa-regular fa-credit-card"></i> Payments</a></li>
           <li><a routerLink="/dashboard/profile" routerLinkActive="active"><i class="fa-regular fa-address-card"></i> Profile</a></li>
-          <a class="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+          <a (click)="onLogout()" class="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
         </mat-nav-list>
       </ul>
       
