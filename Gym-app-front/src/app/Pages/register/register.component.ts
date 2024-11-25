@@ -74,14 +74,18 @@ onSubmit() {
 
 
     var newMember: Miembro = {
-      NombreCompleto :this.myForm.value.NombreCompleto,
+      NombreCompleto: this.myForm.value.NombreCompleto,
       IdPerfil: this.myForm.value.IdPerfil,
-      FechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+      FechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(),
       Email: this.myForm.value.Email,
-      ContactNro: this.myForm.value.ContactNro
+      ContactNro: this.myForm.value.ContactNro,
+      FechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(),  // Asignación de FechaPago
+      EstaPagada: true,  
+      FechaVencimiento: new Date(new Date(this.myForm.value.FechaIngreso).setMonth(new Date(this.myForm.value.FechaIngreso).getMonth() + 1)).toISOString()
     };
     
-    console.log('Formulario enviado: ', this.myForm.value);
+    
+    console.log('Formulario enviado: ', newMember);
     this.addMember.registrarCliente(newMember)
       .subscribe(
         (data: any) => {
