@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Miembro } from '../../Interfaces/miembro';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { AddMemberService } from '../../Services/add-member.service';
+import { AddMemberService } from '../../Services/member.service';
 
 @Component({
   selector: 'app-register',

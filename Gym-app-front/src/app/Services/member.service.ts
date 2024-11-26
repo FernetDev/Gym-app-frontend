@@ -18,4 +18,12 @@ export class AddMemberService {
     return this.http.post<any>(`${this.baseUrl}Cliente/guardar`, objeto,)
   }
 
+  obtenerMiembros(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}Cliente/lista`);
+  }
+
+
+  actualizarPago(member: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}Cliente/editar`, member);
+  }
 }
