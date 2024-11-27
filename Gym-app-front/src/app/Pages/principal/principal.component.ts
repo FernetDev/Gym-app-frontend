@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+import { NgFor, NgIf, CommonModule, AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddMemberService } from '../../Services/member.service';
 import { Miembro } from '../../Interfaces/miembro';  
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule,],
+  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css'],
 })
@@ -27,8 +27,16 @@ export class PrincipalComponent implements OnInit {
   loadMembers(): void {
     this.memberService.listarMiembros().subscribe(
       (data: Miembro[]) => {
-        // Almacenar los miembros en la propiedad members
-        this.members = data;  
+        this.members = data;
+          const fechaActual = new Date();
+          
+          this.members.forEach(member => {
+            const vencimiento = new Date(member.fechaVencimiento); 
+            if (fechaActual > vencimiento) {
+              member.estaPagada = false;  
+            }
+          });
+        
         console.log('Miembros cargados:', this.members);
       },
       (error) => {

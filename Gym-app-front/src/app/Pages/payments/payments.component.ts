@@ -11,11 +11,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf, NgFor } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, ReactiveFormsModule, NgIf, MatAutocompleteModule, NgFor,AsyncPipe],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, ReactiveFormsModule, NgIf, MatAutocompleteModule, NgFor,AsyncPipe ],
   templateUrl: './payments.component.html',
   styleUrls: ['./payments.component.css']
 })
@@ -30,7 +31,7 @@ export class PaymentsComponent implements OnInit {
   members: any[] = []; // Lista de miembros
   filteredMembers: Observable<any[]> = new Observable<any[]>(); // Inicializar como observable vacío
   
-  constructor(private fb: FormBuilder, private memberService: AddMemberService) {}
+  constructor(private fb: FormBuilder, private memberService: AddMemberService, private snack: MatSnackBar) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -89,6 +90,10 @@ export class PaymentsComponent implements OnInit {
       this.memberService.actualizarPago(updatedMember).subscribe(
         response => {
           console.log('Miembro actualizado exitosamente', response);
+          this.snack.open('Cliente registrado exitosamente.', 'Cerrar', {
+            duration: 4000, 
+            panelClass: ['snack-success'], 
+          });
         },
         error => {
          error

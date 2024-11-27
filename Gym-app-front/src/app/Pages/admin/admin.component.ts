@@ -3,6 +3,7 @@ import { AccesoService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../../Interfaces/usuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -19,6 +20,8 @@ export class AdminComponent {
   private router = inject(Router);
   public myForm = inject(FormBuilder);
   
+constructor(private snackBar: MatSnackBar){}
+
   //Formulario para Iniciar
   public formRegistro: FormGroup = this.myForm.group({
     nombre:['',Validators.required],
@@ -41,7 +44,10 @@ export class AdminComponent {
       this.accesoService.registrarse(objeto).subscribe({
         next: (data) =>{
           if(data.isSuccess){
-            this.router.navigate([''])
+            this.snackBar.open('Admin registrado exitosamente.', 'Cerrar', {
+              duration: 4000, 
+              panelClass: ['snack-success'], 
+            });
           }else{
             alert("No se pudo Registrar")
           }
