@@ -6,12 +6,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Miembro } from '../../Interfaces/miembro';
 import { Title } from '@angular/platform-browser';  
+import { formatDate } from '@angular/common';
+import { format } from 'path';
+import { NgFor } from '@angular/common';
+import { MatAutocomplete, MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,NgFor, MatAutocomplete,MatOption,MatAutocompleteModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
@@ -19,6 +23,11 @@ export class ProfileComponent {
   memberId!: number;
   myForm: FormGroup; 
   memberData: any = {}; 
+  options = [
+    { label: 'Básico', value: 1 },
+    { label: 'Personalizado', value: 2 },
+    { label: 'Powerlifter', value: 3 }
+  ];
 
 
   constructor(
@@ -39,6 +48,9 @@ export class ProfileComponent {
     });
   }
 
+  
+
+  
   ngOnInit(): void {
     this.memberId = +this.route.snapshot.paramMap.get('id')!;
     this.loadMemberData(this.memberId);
@@ -47,11 +59,13 @@ export class ProfileComponent {
   
 
   loadMemberData(id: number): void {
+
     this.memberService.obtenerMiembroId(id).subscribe(
       (data) => {
         if (data) {
           this.memberData = data
-          const perfilDescripcion = this.getPerfilDescripcion(data.idPerfil);
+          const perfil = this.options.find(option => option.value === this.memberData.idPerfil);
+        const idPerfilLabel = perfil ? perfil.label : '';  // Asigna la etiqueta o una cadena vacía si no se encuentra
           this.myForm.patchValue({
             nombreCompleto: data.nombreCompleto,
             email: data.email,
@@ -59,7 +73,8 @@ export class ProfileComponent {
             fechaVencimiento: data.fechaVencimiento.split('T')[0],
             fechaIngreso: data.fechaIngreso.split('T')[0],
             fechaPago: data.fechaPago.split('T')[0],
-            idPerfil: perfilDescripcion, // Aquí usamos la descripción en lugar del número
+            idPerfil: idPerfilLabel // Asignar la etiqueta aquí
+         
 
           });
         } else {
@@ -72,16 +87,34 @@ export class ProfileComponent {
     );
   }
 
-  getPerfilDescripcion(idPerfil: number): string {
-    switch (idPerfil) {
-      case 1:
-        return 'Básico';
-      case 2:
-        return 'Personalizado';
-      case 3:
-        return 'Powerlifter';
-      default:
-        return 'Desconocido';
-    }
-  }
+
+  onSubmit(){
+    const selectedOption = this.options.find(option => option.label === this.myForm.value.idPerfil);
+    const idPerfilValue = selectedOption ? selectedOption.value : null;
+    
+    const updatedMember = {
+      ...this.memberData,
+      nombreCompleto: this.myForm.value.nombreCompleto,
+      contactNro: this.myForm.value.contactNro, 
+      email: this.myForm.value.email, 
+      idPerfil: idPerfilValue,
+      estaPagada: true,
+      fechaPago: this.myForm.value.fechaPago,
+      fechaVencimiento: this.myForm.value.fechaVencimiento,
+      fechaIngreso: this.myForm.value.fechaIngreso
+    };
+
+    console.log(updatedMember);  // Verifica en consola el objeto que estás enviando
+
+    this.memberService.actualizarPago(updatedMember).subscribe(
+      response => {
+        console.log('Miembro actualizado exitosamente', response);
+      },
+      error => {
+       error
+      }
+    );
+  } 
+
+  
 }

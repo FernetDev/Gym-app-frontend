@@ -1,8 +1,10 @@
 <div class="profile-section">
   <div class="profile-container">
     <div class="profile-header">
+      <div class="profile-pic">
+        <img src="https://as2.ftcdn.net/v2/jpg/00/96/60/99/1000_F_96609924_74UtjNBdDCKymIZcbxZJhJ3sO9pzIenF.jpg" alt="Instructor Profile">
+      </div>
       <h3 class="instructor-name">{{memberData.nombreCompleto}}</h3>
-      <p class="instructor-email">{{memberData.email}}</p>
     </div>
   
     <div class="profile-info">
@@ -20,9 +22,14 @@
           <input type="text" formControlName="email">
         </div>
         <div class="form-group">
-          <label for="description">Plan</label>
-          <input type="text" formControlName="idPerfil">
-        </div>
+          <label>Profile</label>
+          <input type="text" placeholder="Choose plan" aria-label="Number" formControlName="idPerfil" matInput [matAutocomplete]="profileAuto">
+          <mat-autocomplete #profileAuto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option.label">
+              {{ option.label }}
+            </mat-option>
+          </mat-autocomplete>
+      </div>
         <div class="form-group">
           <label for="description">Last payment</label>
           <input type="text" formControlName="fechaPago">
@@ -34,6 +41,9 @@
         <div class="form-group">
           <label for="description">Registered since</label>
           <input type="text" formControlName="fechaIngreso">
+        </div>
+        <div class="button-group">
+          <button type="submit" (click)="onSubmit()" class="save-button">Save</button>
         </div>
       </form>
     </div>

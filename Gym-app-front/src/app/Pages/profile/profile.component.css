@@ -1,40 +1,62 @@
-/* Profile container */
 .profile-section{
         width: 80%;
-        height: 40%;
+        height: 100%;
         margin: 0 auto;
-        margin-top: 10%;
         font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 .profile-container {
     background: #ffffff;
-    padding: 20px; /* Aumenté el padding para asegurar que haya más espacio dentro del contenedor */
+    padding: 2%; 
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     max-width: 80%;
     width: 100%;
-    margin: 40px auto 20px auto; /* Añadí margen en la parte superior y aseguré el margen inferior */
+    margin: 0 auto;
     color: #154360;
     font-family: "Poppins", sans-serif;
 }
 
-/* Profile header */
 .profile-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 15px;
 }
 
-/* Profile information */
+.profile-header h3{
+    font-weight: 600;
+    font-family: "Poppins", serif;
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem; 
+    height: 6rem;
+    overflow: hidden;
+    border-radius: 50%; 
+    border: 3px solid #E1E1E1; 
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+
 .profile-info {
     font-size: 14px;
 }
 
-/* Profile form */
 .profile-form {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+
     gap: 10px;
 }
 
@@ -171,3 +193,23 @@
 .member-info button:hover {
     background-color: #1a5276;
 }
+
+.button-group{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background: linear-gradient(45deg, #0679f5, #00a2ff);
+    font-size: 0.8rem;
+    color: white;
+    border: none;
+    padding: 10px 55px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;  
+    margin-top: 1.3rem;
+}
+
