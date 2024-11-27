@@ -13,10 +13,10 @@ export class AddMemberService {
   
   constructor() { }
 
-
-  registrarCliente(objeto:Miembro):Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}Cliente/guardar`, objeto,)
+  registrarCliente(objeto: Miembro): Observable<any> {
+    return this.http.post(`${this.baseUrl}Cliente/guardar`, objeto, { responseType: 'text' as 'json' });
   }
+
 
   obtenerMiembros(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}Cliente/lista`);

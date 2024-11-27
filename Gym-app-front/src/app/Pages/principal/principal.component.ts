@@ -24,7 +24,6 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.loadMembers();
   }
-
   loadMembers(): void {
     this.memberService.listarMiembros().subscribe(
       (data: Miembro[]) => {
@@ -37,6 +36,7 @@ export class PrincipalComponent implements OnInit {
       }
     );
   }
+
 
   changePage(event: any) {
     this.pageIndex = event.pageIndex; 

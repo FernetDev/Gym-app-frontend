@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Miembro } from '../../Interfaces/miembro';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddMemberService } from '../../Services/member.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +40,7 @@ export class RegisterComponent {
   ];
   
 
-constructor(private fb: FormBuilder){}
+constructor(private fb: FormBuilder, private snackBar: MatSnackBar){}
 ngOnInit(): void {
   this.myForm = this.fb.group({
     NombreCompleto: [
@@ -72,7 +73,7 @@ onSubmit() {
       fechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(),
       Email: this.myForm.value.Email,
       ContactNro: this.myForm.value.ContactNro,
-      fechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+      fechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(),
       estaPagada: true,
       fechaVencimiento: new Date(
         new Date(this.myForm.value.FechaIngreso).setMonth(
@@ -86,19 +87,29 @@ onSubmit() {
     this.addMember.registrarCliente(newMember).subscribe(
       (data: any) => {
         console.log('Miembro registrado: ', data);
-        alert('Cliente registrado exitosamente.');
+        this.snackBar.open('Cliente registrado exitosamente.', 'Cerrar', {
+          duration: 4000, 
+          panelClass: ['snack-success'], 
+        });
         // Resetear el formulario
         this.onCancel();
       },
       (error: any) => {
         console.error('Error al registrar miembro: ', error);
-        alert('Ocurrió un error al registrar el cliente. Intenta nuevamente.');
+        this.snackBar.open('Ocurrió un error al registrar el cliente. Intenta nuevamente.', 'Cerrar', {
+          duration: 3000,
+          panelClass: ['snack-error'], 
+        });
       }
     );
   } else {
-      alert('Por favor, corrige los campos antes de enviar.');
+    this.snackBar.open('Por favor, corrige los campos antes de enviar.', 'Cerrar', {
+      duration: 3000,
+      panelClass: ['snack-warning'], 
+    });
   }
 }
+
 //metodo para resetear el form
 onCancel(): void {
   this.myForm.reset(); // Restablece todos los campos del formulario

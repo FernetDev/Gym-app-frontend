@@ -106,4 +106,21 @@ button:disabled {
   }
   
 
-
+/* Estilo para la notificación de éxito */
+.snack-success {
+    background-color: #4caf50; /* Verde */
+    color: white;
+  }
+  
+  /* Estilo para la notificación de error */
+  .snack-error {
+    background-color: #f44336; /* Rojo */
+    color: white;
+  }
+  
+  /* Estilo para la notificación de advertencia */
+  .snack-warning {
+    background-color: #ff9800; /* Naranja */
+    color: white;
+  }
+  
