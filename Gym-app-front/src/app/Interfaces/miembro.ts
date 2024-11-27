@@ -1,10 +1,10 @@
 export interface Miembro {
-    NombreCompleto :string,
+    nombreCompleto :string,
     IdPerfil: number,
-    FechaIngreso: string,
+    fechaIngreso: string,
     Email: string,
     ContactNro: number,
-    FechaPago: string,
-    EstaPagada: boolean,
-    FechaVencimiento: string
+    fechaPago: string,
+    estaPagada: boolean,
+    fechaVencimiento: string
 }
