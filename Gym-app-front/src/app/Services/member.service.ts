@@ -22,6 +22,16 @@ export class AddMemberService {
     return this.http.get<any[]>(`${this.baseUrl}Cliente/lista`);
   }
 
+  listarMiembros(): Observable<Miembro[]> {
+    return this.http.get<Miembro[]>(`${this.baseUrl}Cliente/lista`).pipe(
+      retry(1),
+      catchError((error) => {
+        console.error('Error al listar miembros:', error);
+        return throwError(() => new Error('Error al obtener los miembros.'));
+      })
+    );
+  }
+
   actualizarPago(member: any): Observable<any> {
     return this.http.put(`${this.baseUrl}Cliente/editar`, member);
   }

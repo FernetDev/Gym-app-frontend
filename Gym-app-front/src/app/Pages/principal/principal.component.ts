@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AddMemberService } from '../../Services/add-member.service';  
+import { AddMemberService } from '../../Services/member.service';
 import { Miembro } from '../../Interfaces/miembro';  
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -18,7 +19,7 @@ export class PrincipalComponent implements OnInit {
   pageIndex: number = 0; 
   searchTerm: string = '';
   
-  constructor(private memberService: AddMemberService) {}
+  constructor(private memberService: AddMemberService, private router : Router) {}
 
   ngOnInit(): void {
     this.loadMembers();
@@ -54,5 +55,13 @@ export class PrincipalComponent implements OnInit {
     if (!value) return;
     this.pageSize = value === 'See All' ? this.members.length : parseInt(value, 10);
     this.pageIndex = 0;
+  
   }
-}
+
+
+  verPerfil(memberId: number): void {
+    this.router.navigate(['/profile', memberId]);
+  }
+
+
+} 

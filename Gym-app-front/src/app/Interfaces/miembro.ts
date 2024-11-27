@@ -1,4 +1,5 @@
 export interface Miembro {
+    idCliente?: number,
     nombreCompleto :string,
     IdPerfil: number,
     fechaIngreso: string,
