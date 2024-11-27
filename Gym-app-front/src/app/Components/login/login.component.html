@@ -1,25 +1,30 @@
 <div class="card-container">
-    <mat-card appearance="outlined">
+    <mat-card appearance="outlined" class="login-card">
         <mat-card-header>
-            <mat-card-title>Iniciar Sesion</mat-card-title>
+            <mat-card-title class="card-title">Iniciar Sesión</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <form class="form-custom" [formGroup]="formLogin">
-                <mat-form-field class="input-custom">
-                    <mat-label>Correo</mat-label>
-                    <input matInput formControlName="correo">
-                </mat-form-field>
-                <mat-form-field class="input-custom">
-                    <mat-label>Clave</mat-label>
-                    <input matInput formControlName="clave" type="password">
-                </mat-form-field>
+                <div class="input-group">
+                    <mat-form-field class="input-custom" appearance="outline">
+                        <span class="material-icons input-icon">email</span>
+                        <mat-label>Correo</mat-label>
+                        <input matInput formControlName="correo" />
+                    </mat-form-field>
+                </div>
+                <div class="input-group">
+                    <mat-form-field class="input-custom" appearance="outline">
+                        <span class="material-icons input-icon">lock</span>
+                        <mat-label>Clave</mat-label>
+                        <input matInput formControlName="clave" type="password" />
+                    </mat-form-field>
+                </div>
                 <div class="flex">
-                    <button mat-flat-button
-                        color="primary" 
-                        (click)="iniciarSesion()">Iniciar Sesion</button>
+                    <button mat-flat-button color="primary" class="login-button" (click)="iniciarSesion()">
+                        Iniciar Sesión
+                    </button>
                 </div>
             </form>
         </mat-card-content>
     </mat-card>
-
 </div>
