@@ -1,61 +1,43 @@
 <div class="conteiner-general">
   <div class="bienvenida-conteiner">
-    <h1>Register </h1>
+    <h1>Register</h1>
   </div>
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="registro">
     <div class="form-row">
 
-
       <div class="group-registro">
         <label>Name of Member</label>
         <input matInput formControlName="NombreCompleto">
-        <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched"
-          class="error-message">
-          <small *ngIf="myForm.get('nombreCompleto')?.hasError('required')">Name is required.</small>
-          <small *ngIf="myForm.get('nombreCompleto')?.hasError('pattern')">Only letters and spaces are allowed.</small>
+        <div *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched" class="error-message">
         </div>
       </div>
 
       <div class="group-registro">
         <label>Email</label>
         <input matInput formControlName="Email">
-        <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
-          <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
-            <small *ngIf="myForm.get('email')?.hasError('required')">Email is required.</small>
-            <small *ngIf="myForm.get('email')?.hasError('email')">Enter a valid email.</small>
-          </div>
-          
+        <div *ngIf="myForm.get('Email')?.invalid && myForm.get('Email')?.touched" class="error-message">
         </div>
       </div>
     </div>
+
     <div class="form-row">
-
-
       <div class="group-registro">
         <label>Profile</label>
-        <input type="text" placeholder="Choose plan" aria-label="Number" formControlName="IdPerfil" matInput [matAutocomplete]="auto">
+        <input type="text" placeholder="Choose plan" formControlName="IdPerfil" matInput [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of options" [value]="option.value">
             {{ option.label }}
           </mat-option>
-
         </mat-autocomplete>
       </div>
 
-
-        <div class="group-registro">
-          <label>Contact Number</label>
-          <input matInput formControlName="ContactNro">
-          <div *ngIf="myForm.get('contactNro')?.invalid && myForm.get('contactNro')?.touched" class="error-message">
-            <small *ngIf="myForm.get('contactNro')?.hasError('required')">Contact number is required.</small>
-            <small *ngIf="myForm.get('contactNro')?.hasError('pattern')">Contact number must be 10 digits.</small>
-          </div>
+      <div class="group-registro">
+        <label>Contact Number</label>
+        <input matInput formControlName="ContactNro">
+        <div *ngIf="myForm.get('ContactNro')?.invalid && myForm.get('ContactNro')?.touched" class="error-message">
         </div>
+      </div>
     </div>
-            
-
-
-
 
     <div class="form-row">
       <div class="group-registro-icon">
@@ -64,10 +46,10 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </div>
-    
+
       <div class="botones-registro">
-          <button type="submit"  class="save-button">Save</button>
-          <button type="button" class="cancel-button">Cancel</button>
+        <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
+        <button type="button" (click)="onCancel()" class="cancel-button">Cancel</button>
       </div>
     </div>
   </form>

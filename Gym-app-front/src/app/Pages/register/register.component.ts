@@ -65,44 +65,42 @@ ngOnInit(): void {
 
 
 onSubmit() {
-
-
-  if(this.myForm.valid) {
-
-
-    
-
-
+  if (this.myForm.valid) {
     var newMember: Miembro = {
-      NombreCompleto: this.myForm.value.NombreCompleto,
+      nombreCompleto: this.myForm.value.NombreCompleto,
       IdPerfil: this.myForm.value.IdPerfil,
-      FechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(),
+      fechaIngreso: new Date(this.myForm.value.FechaIngreso).toISOString(),
       Email: this.myForm.value.Email,
       ContactNro: this.myForm.value.ContactNro,
-      FechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(),  // Asignación de FechaPago
-      EstaPagada: true,  
-      FechaVencimiento: new Date(new Date(this.myForm.value.FechaIngreso).setMonth(new Date(this.myForm.value.FechaIngreso).getMonth() + 1)).toISOString()
+      fechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+      estaPagada: true,
+      fechaVencimiento: new Date(
+        new Date(this.myForm.value.FechaIngreso).setMonth(
+          new Date(this.myForm.value.FechaIngreso).getMonth() + 1
+        )
+      ).toISOString(),
     };
-    
-    
+
     console.log('Formulario enviado: ', newMember);
-    this.addMember.registrarCliente(newMember)
-      .subscribe(
-        (data: any) => {
-          console.log('Miembro registrado ', data);
-        }
-      );
+
+    this.addMember.registrarCliente(newMember).subscribe(
+      (data: any) => {
+        console.log('Miembro registrado: ', data);
+        alert('Cliente registrado exitosamente.');
+        // Resetear el formulario
+        this.onCancel();
+      },
+      (error: any) => {
+        console.error('Error al registrar miembro: ', error);
+        alert('Ocurrió un error al registrar el cliente. Intenta nuevamente.');
+      }
+    );
+  } else {
+      alert('Por favor, corrige los campos antes de enviar.');
   }
 }
-
-
-
-
 //metodo para resetear el form
 onCancel(): void {
   this.myForm.reset(); // Restablece todos los campos del formulario
-}
-
-
-  
+}  
 }

@@ -2,7 +2,7 @@
     width: 80%;
     height: 50%;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 10vh;
     font-family: Arial, sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -75,7 +75,7 @@ input{
 }
 
 .save-button {
-    background-color:#6399BC;
+    background-color:rgba(21, 67, 96, 1);
     color: white;
     border: none;
     padding: 10px 25px;
@@ -99,7 +99,11 @@ input{
     margin-top: 5px;
 }
 
-
-/* Contenedor del input con ícono data of join */
+button:disabled {
+    background-color: #d3d3d3;
+    color: #808080;
+    cursor:auto;
+  }
+  
 
 
