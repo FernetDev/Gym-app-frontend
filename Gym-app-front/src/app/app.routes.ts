@@ -9,13 +9,14 @@ import { LoginComponent } from './Components/login/login.component';
 import { authGuard } from './Guards/auth.guard';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent }, // Ruta de login sin canActivate
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirección a login si la ruta está vacía
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard], children: [
       { path: 'principal', component: PrincipalComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'payments', component: PaymentsComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/:id', component: ProfileComponent}
     ]},
 ];

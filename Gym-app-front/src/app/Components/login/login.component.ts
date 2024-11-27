@@ -37,6 +37,7 @@ export class LoginComponent {
       correo: this.formLogin.value.correo,
       clave: this.formLogin.value.clave
     }
+    
 
     this.accesoService.login(objeto).subscribe({
       next: (data: ResponseAcceso) => { // Usa la interfaz correcta
