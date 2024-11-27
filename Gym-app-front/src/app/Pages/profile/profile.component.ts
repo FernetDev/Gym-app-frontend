@@ -40,11 +40,11 @@ export class ProfileComponent {
       email: ['', [Validators.required, Validators.email]],
       contactNro: ['', Validators.required],
       idCliente: [''],
-      idPerfil: [''],
+      idPerfil: ['', Validators.required],
       estaPagada: [''],
-      fechaPago: [''],
-      fechaVencimiento: [''],
-      fechaIngreso: [''],
+      fechaPago: ['', Validators.required],
+      fechaVencimiento: ['', Validators.required],
+      fechaIngreso: ['', Validators.required],
     });
   }
 
@@ -65,7 +65,7 @@ export class ProfileComponent {
         if (data) {
           this.memberData = data
           const perfil = this.options.find(option => option.value === this.memberData.idPerfil);
-        const idPerfilLabel = perfil ? perfil.label : '';  // Asigna la etiqueta o una cadena vacía si no se encuentra
+          const idPerfilLabel = perfil ? perfil.label : ''; 
           this.myForm.patchValue({
             nombreCompleto: data.nombreCompleto,
             email: data.email,
@@ -73,7 +73,7 @@ export class ProfileComponent {
             fechaVencimiento: data.fechaVencimiento.split('T')[0],
             fechaIngreso: data.fechaIngreso.split('T')[0],
             fechaPago: data.fechaPago.split('T')[0],
-            idPerfil: idPerfilLabel // Asignar la etiqueta aquí
+            idPerfil: idPerfilLabel 
          
 
           });
