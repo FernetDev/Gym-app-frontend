@@ -1,27 +1,23 @@
 <div class="profile-section">
   <div class="profile-container">
     <div class="profile-header">
-      <h3 class="instructor-name">Matias Ramirez</h3>
-      <p class="instructor-email">Matiasramirez&#64;gmail.com</p>
+      <h3 class="instructor-name">{{memberData.nombreCompleto}}</h3>
+      <p class="instructor-email">{{memberData.email}}</p>
     </div>
   
     <div class="profile-info">
-      <form class="profile-form">
+      <form [formGroup]="myForm" class="profile-form">
         <div class="form-group">
           <label for="first-name">First Name</label>
-          <input type="text" id="first-name" [(ngModel)]="memberData.name" placeholder="First Name">
-        </div>
-        <div class="form-group">
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" placeholder="Last Name">
+          <input type="text" id="first-name"  formControlName="nombreCompleto">
         </div>
         <div class="form-group">
           <label for="contact">Contact</label>
-          <input type="tel" id="contact" placeholder="Contact Number">
+          <input type="tel" id="contact" placeholder="Contact Number" formControlName="contactNro">
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" placeholder="Mini Description"></textarea>
+          <label for="description">Email</label>
+          <input type="text" formControlName="email">
         </div>
       </form>
     </div>

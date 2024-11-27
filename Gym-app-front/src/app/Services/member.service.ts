@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { catchError, map, Observable, retry, throwError } from 'rxjs';
+import { catchError, map, Observable, retry, tap, throwError } from 'rxjs';
 import { appsettings } from '../settings/appsettings';
 import { Miembro } from '../Interfaces/miembro';
 
@@ -38,7 +38,12 @@ export class AddMemberService {
 
 
   obtenerMiembroId(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Cliente/buscar/${id}`);
+    return this.http.get<any>(`${this.baseUrl}Cliente/buscar/${id}`).pipe(
+      tap(response => console.log('Respuesta del servidor:', response)),  
+      catchError(error => {
+        console.error('Error al obtener el miembro:', error);
+        return throwError(error);
+      })
+    )
+   }
   }
-
-}

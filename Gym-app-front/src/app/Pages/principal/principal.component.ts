@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule],
+  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule,],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css'],
 })
@@ -60,7 +60,7 @@ export class PrincipalComponent implements OnInit {
 
 
   verPerfil(memberId: number): void {
-    this.router.navigate(['/profile', memberId]);
+    this.router.navigate(['dashboard/profile/', memberId]);
   }
 
 
