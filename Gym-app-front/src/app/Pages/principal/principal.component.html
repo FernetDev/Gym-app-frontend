@@ -1,39 +1,40 @@
 <div class="main-content">
     <div class="members-box">
-        <h2>Members</h2>
-        
-        <div class="options-bar">
-            <div class="show-options">
-                <label for="show-count">Show:</label>
-                <select id="show-count" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)">
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option [value]="'See All'">See All</option>
-                </select>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search member..." [(ngModel)]="searchTerm">
-            </div>
+      <h2>Members</h2>
+  
+      <div class="options-bar">
+        <div class="show-options">
+          <label for="show-count">Show:</label>
+          <select id="show-count" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option [value]="'See All'">See All</option>
+          </select>
         </div>
-        <div class="members-header">
-            <span><strong>Name</strong></span>
-            <span><strong>State</strong></span>
-            <span><strong>Date paid</strong></span>
-            <span><strong>Date expiry</strong></span>
-            <span><strong>Actions</strong></span>
+        <div class="search-bar">
+          <input type="text" placeholder="Search member..." [(ngModel)]="searchTerm">
         </div>
-        <ul class="members-list">
-            <li class="member" *ngFor="let member of getFilteredMembers() | slice: (pageIndex * pageSize)">
-                <div class="member-info">
-                    <span> {{member.name}} </span>
-                    <span> {{member.state}} </span>
-                    <span> {{member.datePaid}} </span>
-                    <span> {{member.dateExpiry}} </span>
-                    <button>Edit</button>
-                </div>
-            </li>
-           
-                  
-        </ul>
-    </div>
-</div>
+      </div>
+  
+      <div class="members-header">
+        <span><strong>Name</strong></span>
+        <span><strong>State</strong></span>
+        <span><strong>Date paid</strong></span>
+        <span><strong>Date expiry</strong></span>
+        <span><strong>Actions</strong></span>
+      </div>
+  
+      <ul class="members-list">
+        <li class="member" *ngFor="let member of getFilteredMembers()">
+          <div class="member-info">
+            <span>{{ member.nombreCompleto || 'Nombre no disponible' }}</span>
+            <span>{{ member.estaPagada ? 'Paid' : 'Unpaid' }}</span>
+            <span>{{ member.fechaPago ? (member.fechaPago | date:'shortDate') : 'No available date' }}</span>
+            <span>{{ member.fechaVencimiento ? (member.fechaVencimiento | date:'shortDate') : 'No available date' }}</span>
+            <button>Edit</button>
+          </div>
+        </li>
+      </ul>
+
+  </div>
+  
