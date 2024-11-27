@@ -30,6 +30,12 @@ export class ProfileComponent {
       nombreCompleto: ['', Validators.required],  
       email: ['', [Validators.required, Validators.email]],
       contactNro: ['', Validators.required],
+      idCliente: [''],
+      idPerfil: [''],
+      estaPagada: [''],
+      fechaPago: [''],
+      fechaVencimiento: [''],
+      fechaIngreso: [''],
     });
   }
 
@@ -45,10 +51,16 @@ export class ProfileComponent {
       (data) => {
         if (data) {
           this.memberData = data
+          const perfilDescripcion = this.getPerfilDescripcion(data.idPerfil);
           this.myForm.patchValue({
             nombreCompleto: data.nombreCompleto,
             email: data.email,
             contactNro: data.contactNro,
+            fechaVencimiento: data.fechaVencimiento.split('T')[0],
+            fechaIngreso: data.fechaIngreso.split('T')[0],
+            fechaPago: data.fechaPago.split('T')[0],
+            idPerfil: perfilDescripcion, // Aquí usamos la descripción en lugar del número
+
           });
         } else {
           console.error('No se encontró un miembro con el ID:', id);
@@ -58,5 +70,18 @@ export class ProfileComponent {
         console.error('Error al obtener los datos del miembro:', error);
       }
     );
+  }
+
+  getPerfilDescripcion(idPerfil: number): string {
+    switch (idPerfil) {
+      case 1:
+        return 'Básico';
+      case 2:
+        return 'Personalizado';
+      case 3:
+        return 'Powerlifter';
+      default:
+        return 'Desconocido';
+    }
   }
 }
