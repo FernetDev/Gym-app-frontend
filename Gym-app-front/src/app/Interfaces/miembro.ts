@@ -4,7 +4,7 @@ export interface Miembro {
     IdPerfil: number,
     fechaIngreso: string,
     Email: string,
-    ContactNro: number,
+    ContactNro: string,
     fechaPago: string,
     estaPagada: boolean,
     fechaVencimiento: string

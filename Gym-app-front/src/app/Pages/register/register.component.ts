@@ -44,17 +44,17 @@ ngOnInit(): void {
   this.myForm = this.fb.group({
     NombreCompleto: [
       '', 
-      [Validators.required, Validators.pattern('^[a-zA-Z ]+$')] // Solo letras y espacios
+      [Validators.required, Validators.pattern('^[a-zA-Z ]+$')] 
     ],
 
     FechaIngreso: [new Date(), [Validators.required]],
     ContactNro: [
       '',
-      [Validators.required, Validators.pattern('^[0-9]{10}$')] // Solo números y de longitud 10
+      [Validators.required, Validators.pattern('^[0-9]{10}$')] 
     ],
     Email: [
       '', 
-      [Validators.required, Validators.email] // Validación de formato de email
+      [Validators.required, Validators.email]
     ],
     IdPerfil: [
       '', 
