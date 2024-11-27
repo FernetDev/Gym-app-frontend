@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AddMemberService } from '../../Services/add-member.service';  
+import { AddMemberService } from '../../Services/member.service';  
 import { Miembro } from '../../Interfaces/miembro';  
 
 @Component({
@@ -23,7 +23,6 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.loadMembers();
   }
-
   loadMembers(): void {
     this.memberService.listarMiembros().subscribe(
       (data: Miembro[]) => {
@@ -36,6 +35,7 @@ export class PrincipalComponent implements OnInit {
       }
     );
   }
+
 
   changePage(event: any) {
     this.pageIndex = event.pageIndex; 
