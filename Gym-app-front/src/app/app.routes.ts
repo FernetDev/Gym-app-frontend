@@ -16,7 +16,6 @@ export const routes: Routes = [
       { path: 'admin', component: AdminComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'payments', component: PaymentsComponent },
-      { path: 'profile', component: ProfileComponent },
       { path: 'profile/:id', component: ProfileComponent },
     ]},
 ];

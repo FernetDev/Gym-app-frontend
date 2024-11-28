@@ -41,7 +41,6 @@ export class AddMemberService {
     return this.http.get<any>(`${this.baseUrl}Cliente/buscar/${id}`).pipe(
       tap(response => console.log('Respuesta del servidor:', response)),  
       catchError(error => {
-        console.error('Error al obtener el miembro:', error);
         return throwError(error);
       })
     )
