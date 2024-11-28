@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, } from '@angular/core';
 import { AccesoService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../../Interfaces/login';
@@ -10,11 +10,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatCardModule,MatFormFieldModule,MatInputModule,MatButtonModule,ReactiveFormsModule],
+  imports: [MatCardModule,MatFormFieldModule,MatInputModule,MatButtonModule,ReactiveFormsModule, NgIf],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -23,9 +25,11 @@ export class LoginComponent {
   private router = inject(Router);
   public formBuil = inject(FormBuilder);
   
+  constructor(private snackBar: MatSnackBar){}
+
   //Formulario para Iniciar
   public formLogin: FormGroup = this.formBuil.group({
-    correo:['',Validators.required],
+    correo:['',Validators.required, Validators.email],
     clave:['',Validators.required]
   });
 
@@ -48,7 +52,10 @@ export class LoginComponent {
     
           this.router.navigate(['/dashboard']); // Redirige al dashboard
         } else {
-          alert("Las Credenciales son Incorrectas.");
+          this.snackBar.open('Email or Password incorrect.', 'Cerrar'), {
+            duration: 4000, 
+            panelClass: ['snack-error'],
+          }
         }
       },
       error: (error) => {
@@ -63,4 +70,6 @@ export class LoginComponent {
   registrarse(){
     this.router.navigate(['registro']); //Redirige a registro
   }
+
+
 }

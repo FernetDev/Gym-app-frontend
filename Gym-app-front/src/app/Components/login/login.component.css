@@ -84,3 +84,9 @@ mat-form-field.mat-form-field-appearance-outline .mat-form-field-input {
         width: 90%;
     }
 }
+
+.error{
+    color: red;
+    margin: 0;
+    padding: 0;
+}
