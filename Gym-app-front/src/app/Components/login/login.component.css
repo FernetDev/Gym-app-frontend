@@ -10,8 +10,8 @@
 .card-title-outside {
     font-size: 28px;
     font-weight: bold;
-    color: #ffffff;  
-    margin-bottom: 20px; 
+    color: #ffffff;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -23,7 +23,6 @@
 
 .input-group {
     margin-bottom: 20px;
-    position: relative;
 }
 
 .input-custom {
@@ -35,17 +34,8 @@ mat-form-field {
     position: relative;
 }
 
-mat-form-field .input-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+mat-label {
     color: #00a2ff;
-    font-size: 20px;
-}
-
-mat-form-field .mat-form-field-infix {
-    padding-left: 40px;
 }
 
 mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline {
@@ -58,7 +48,7 @@ mat-form-field.mat-form-field-appearance-outline .mat-form-field-label {
 }
 
 mat-form-field.mat-form-field-appearance-outline .mat-form-field-input {
-    padding-left: 35px;
+    padding-left: 10px; 
 }
 
 .login-button {
@@ -85,7 +75,7 @@ mat-form-field.mat-form-field-appearance-outline .mat-form-field-input {
     }
 }
 
-.error{
+.error {
     color: red;
     margin: 0;
     padding: 0;
