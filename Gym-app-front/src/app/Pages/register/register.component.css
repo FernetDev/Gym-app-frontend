@@ -48,15 +48,33 @@ form{
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .group-registro-icon{
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
+.group-registro-icon input{
+    position: relative;
+}
 
+mat-datepicker-toggle{
+     
+    width: 10%;
+    position: absolute;
+    bottom: 0px;
+    left: 93%;
+    
+}
+mat-datepicker{
+    position: relative;
+    right: 0px;
+    background-color: black;
+}
 
 input{
     padding: 10px;
@@ -95,8 +113,10 @@ input{
 }
 .error-message {
     color: red;
-    font-size: 12px;
-    margin-top: 5px;
+    position: absolute;
+    top: 3.6rem;
+    left: 0;
+    font-weight: 400;
 }
 
 button:disabled {
@@ -131,7 +151,7 @@ button:disabled {
   mat-select{
     display: flex;
     margin: 0px;
-    width: 98%;
+    width: 97.3%;
     padding: 5px;
     height: 1.7rem;
     border: 1px solid #dcdcdc;
@@ -140,6 +160,11 @@ button:disabled {
     font-size: 14px;
 
   }
+
+  ::ng-deep .mat-mdc-select-panel{
+    margin-top: 0.5rem!important;
+    width: 98%!important;
+}
 
  ::ng-deep .mat-mdc-select ng-tns-c1711764913-1 mat-mdc-select-required mat-mdc-select-empty ng-untouched ng-pristine ng-invalid ng-star-inserted{
     margin: 0px;

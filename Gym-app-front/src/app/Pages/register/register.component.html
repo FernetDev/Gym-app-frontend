@@ -9,6 +9,7 @@
         <label>Name of Member</label>
         <input matInput formControlName="NombreCompleto">
         <div *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched" class="error-message">
+          Invalid Name
         </div>
       </div>
 
@@ -16,6 +17,7 @@
         <label>Email</label>
         <input matInput formControlName="Email">
         <div *ngIf="myForm.get('Email')?.invalid && myForm.get('Email')?.touched" class="error-message">
+          Invalid Email
         </div>
       </div>
     </div>
@@ -28,12 +30,16 @@
               {{ option.label }}
             </mat-option>
           </mat-select>
+          <div *ngIf="myForm.get('IdPerfil')?.invalid && myForm.get('IdPerfil')?.touched" class="error-message">
+            Invalid Profile
+          </div>
       </div>
 
       <div class="group-registro">
         <label>Contact Number</label>
         <input matInput formControlName="ContactNro">
         <div *ngIf="myForm.get('ContactNro')?.invalid && myForm.get('ContactNro')?.touched" class="error-message">
+          Invalid Number
         </div>
       </div>
     </div>
@@ -44,6 +50,9 @@
         <input matInput [matDatepicker]="picker" formControlName="FechaIngreso" />
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <div *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched" class="error-message">
+          Invalid Date
+        </div>
       </div>
 
       <div class="botones-registro">

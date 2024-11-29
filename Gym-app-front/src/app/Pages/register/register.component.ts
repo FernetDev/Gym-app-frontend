@@ -102,4 +102,5 @@ export class RegisterComponent {
   onCancel(): void {
     this.myForm.reset();
   }
+  
 }
