@@ -4,18 +4,18 @@ import { AddMemberService } from '../../Services/member.service';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Miembro } from '../../Interfaces/miembro';
-import { Title } from '@angular/platform-browser';  
-import { formatDate } from '@angular/common';
-import { format } from 'path';
+import { MatButton } from '@angular/material/button';
+import { ModalComponent } from '../../Components/modal/modal.component'; 
+import { MatDialog } from '@angular/material/dialog';
 import { NgFor } from '@angular/common';
 import { MatAutocomplete, MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
+
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule,NgFor, MatAutocomplete,MatOption,MatAutocompleteModule],
+  imports: [FormsModule, ReactiveFormsModule,NgFor, MatAutocomplete,MatOption,MatAutocompleteModule, ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
@@ -33,7 +33,8 @@ export class ProfileComponent {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private memberService: AddMemberService
+    private memberService: AddMemberService,
+    private matDialog : MatDialog
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
@@ -127,5 +128,17 @@ export class ProfileComponent {
     });
   }
 
-  
+ 
+  openModal():void{
+    this.matDialog.open(ModalComponent,{
+      width: '500px',
+      height: '200px',
+      data: {
+        title: '',
+        id: this.memberId
+      }, 
+    })
+    
+  }
+
 }

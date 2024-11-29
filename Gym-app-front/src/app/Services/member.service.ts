@@ -50,7 +50,7 @@ export class AddMemberService {
 
    deleteMember(id: number): Observable<any> {
     const url = `${this.baseUrl}Cliente/eliminar/${id}`;
-    return this.http.delete(url);
+    return this.http.delete(url, { responseType: 'text' as 'json' });
   }
    }
   
