@@ -148,3 +148,15 @@
     list-style: none;
     text-decoration: none;
 }
+
+.blue {
+    background-color: blue;
+}
+
+.red-color {
+color: red!important;
+}
+
+.green-color{
+    color: green!important;
+}

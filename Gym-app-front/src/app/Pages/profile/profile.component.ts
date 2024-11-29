@@ -9,6 +9,7 @@ import { ModalComponent } from '../../Components/modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NgFor } from '@angular/common';
 import { MatAutocomplete, MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
 
 
 
@@ -34,7 +35,8 @@ export class ProfileComponent {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private memberService: AddMemberService,
-    private matDialog : MatDialog
+    private matDialog : MatDialog,
+    private router : Router
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
@@ -121,6 +123,7 @@ export class ProfileComponent {
     this.memberService.deleteMember(id).subscribe({
       next: (response) => {
         console.log('Item eliminado:', response);
+        this.router.navigate(['/dashboard/members']);
       },
       error: (error) => {
         console.error('Error al eliminar el item:', error);

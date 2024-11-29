@@ -33,7 +33,8 @@ export class PrincipalComponent implements OnInit {
           this.members.forEach(member => {
             const vencimiento = new Date(member.fechaVencimiento); 
             if (fechaActual > vencimiento) {
-              member.estaPagada = false;  
+              member.estaPagada = false; 
+               
             }
           });
         
