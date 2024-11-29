@@ -50,7 +50,7 @@ export class LoginComponent {
           localStorage.setItem("user", JSON.stringify(data.user)); // Aquí se almacena correctamente el user
 
     
-          this.router.navigate(['/dashboard']); // Redirige al dashboard
+          this.router.navigate(['/dashboard/members']); // Redirige al dashboard
         } else {
           this.snackBar.open('Email or Password incorrect.', 'Cerrar'), {
             duration: 4000, 
