@@ -62,7 +62,7 @@ form{
     position: relative;
 }
 
-mat-datepicker-toggle{
+/* mat-datepicker-toggle{
      
     width: 10%;
     position: absolute;
@@ -74,7 +74,7 @@ mat-datepicker{
     position: relative;
     right: 0px;
     background-color: black;
-}
+} */
 
 input{
     padding: 10px;
