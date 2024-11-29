@@ -33,10 +33,12 @@ export class AddMemberService {
   }
 
   actualizarPago(member: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}Cliente/editar`, member);
+    return this.http.put(`${this.baseUrl}Cliente/editar`, member,
+      {
+        responseType: 'text' // Esto asegura que Angular no intente parsear como JSON
+     }
+    );
   }
-
-
   obtenerMiembroId(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Cliente/buscar/${id}`).pipe(
       tap(response => console.log('Respuesta del servidor:', response)),  

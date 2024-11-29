@@ -26,26 +26,42 @@ export class PaymentsComponent implements OnInit {
     { label: 'Personalizado', value: 2 },
     { label: 'Powerlifter', value: 3 }
   ];
-  
+
   myForm!: FormGroup;
   members: any[] = []; // Lista de miembros
   filteredMembers: Observable<any[]> = new Observable<any[]>(); // Inicializar como observable vacío
-  
-  constructor(private fb: FormBuilder, private memberService: AddMemberService, private snack: MatSnackBar) {}
+
+  constructor(
+    private fb: FormBuilder,
+    private memberService: AddMemberService,
+    private snackBar: MatSnackBar // Cambiado a snackBar para mantener consistencia con `register`
+  ) {}
 
   ngOnInit(): void {
+    // Inicializar formulario
     this.myForm = this.fb.group({
       NombreCompleto: ['', [Validators.required]],
       FechaIngreso: ['', [Validators.required]],
       IdPerfil: ['', [Validators.required]],
-      IdCliente: ['', []] 
+      IdCliente: ['', []] // Este campo se establece automáticamente con el filtro
     });
 
-    this.memberService.obtenerMiembros().subscribe(members => {
-      console.log('Miembros recibidos:', members);
-      this.members = members;
-    });
+    // Cargar lista de miembros
+    this.memberService.obtenerMiembros().subscribe(
+      members => {
+        console.log('Miembros recibidos:', members);
+        this.members = members;
+      },
+      error => {
+        console.error('Error al cargar los miembros:', error);
+        this.snackBar.open('Ocurrió un error al cargar los miembros.', 'Cerrar', {
+          duration: 3000,
+          panelClass: ['snack-error']
+        });
+      }
+    );
 
+    // Configurar filtrado dinámico para el campo "NombreCompleto"
     this.filteredMembers = this.myForm.get('NombreCompleto')!.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -53,15 +69,17 @@ export class PaymentsComponent implements OnInit {
   }
 
   private _filter(value: string): any[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value ? value.toLowerCase() : ''; // Solo aplica toLowerCase si value no es null ni undefined
     return this.members.filter(member => {
+      // Verifica si member.nombreCompleto es válido antes de llamar a toLowerCase
       const isMatch = member.nombreCompleto && member.nombreCompleto.toLowerCase().includes(filterValue);
       if (isMatch) {
-        this.myForm.get('IdCliente')?.setValue(member.idCliente); 
+        this.myForm.get('IdCliente')?.setValue(member.idCliente);
       }
       return isMatch;
     });
   }
+  
   
 
   onSubmit(): void {
@@ -69,38 +87,55 @@ export class PaymentsComponent implements OnInit {
       const miembroSeleccionado = this.members.find(
         member => member.idCliente === this.myForm.value.IdCliente
       );
-  
+
       if (!miembroSeleccionado) {
         console.error('Miembro no encontrado');
+        this.snackBar.open('Miembro no encontrado. Verifica los datos.', 'Cerrar', {
+          duration: 3000,
+          panelClass: ['snack-warning']
+        });
         return;
       }
-  
+
       const updatedMember = {
-        ...miembroSeleccionado, 
+        ...miembroSeleccionado,
         estaPagada: true,
-        fechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(), 
+        fechaPago: new Date(this.myForm.value.FechaIngreso).toISOString(),
         fechaVencimiento: new Date(
           new Date(this.myForm.value.FechaIngreso).setMonth(
             new Date(this.myForm.value.FechaIngreso).getMonth() + 1
           )
         ).toISOString()
       };
-  
-      
+
       this.memberService.actualizarPago(updatedMember).subscribe(
         response => {
           console.log('Miembro actualizado exitosamente', response);
-          this.snack.open('Cliente registrado exitosamente.', 'Cerrar', {
-            duration: 4000, 
-            panelClass: ['snack-success'], 
+          this.snackBar.open('Pago registrado exitosamente.', 'Cerrar', {
+            duration: 4000,
+            panelClass: ['snack-success']
           });
+          this.onCancel(); // Restablece el formulario tras la operación
         },
         error => {
-         error
+          console.error('Error al actualizar pago:', error);
+          this.snackBar.open('Ocurrió un error al registrar el pago. Intenta nuevamente.', 'Cerrar', {
+            duration: 3000,
+            panelClass: ['snack-error']
+          });
         }
       );
     } else {
-      console.log('Formulario inválido', this.myForm.value);
+      console.log('Formulario inválido:', this.myForm.value);
+      this.snackBar.open('Por favor, corrige los campos antes de enviar.', 'Cerrar', {
+        duration: 3000,
+        panelClass: ['snack-warning']
+      });
     }
   }
-}  
+
+  // Método para resetear el formulario
+  onCancel(): void {
+    this.myForm.reset(); // Restablece todos los campos del formulario
+  }
+}

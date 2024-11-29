@@ -1,6 +1,6 @@
 <div class="payments-container">
     <div class="header">
-        <h1>Añadir pago</h1>
+        <h1>Add Payment</h1>
     </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" action="">
         <div class="form-row">
@@ -40,8 +40,8 @@
                 <div class="error" *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched">Date is required</div>
             </div>
             <div class="form-buttons">
-                <button type="submit" [class.disabled]="myForm.invalid" class="save-button">Save</button>
-                <button type="button" class="cancel-button">Cancel</button>
+                <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
+                <button type="button"  (click)="onCancel()" class="cancel-button">Cancel</button>
             </div>
         </div>
     </form>

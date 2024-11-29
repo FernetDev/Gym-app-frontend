@@ -59,7 +59,7 @@ form{
 }
 
 .save-button {
-    background-color:#6399BC;
+    background-color:rgba(21, 67, 96, 1);
     color: white;
     border: none;
     padding: 10px 25px;
@@ -92,12 +92,10 @@ mat-datepicker-toggle{
     
 }
 
-.disabled {
-    background-color: #ccc;      
-    color: #666;                 
-    cursor: not-allowed;         
-    pointer-events: none;         
-    opacity: 0.6;                 
+button:disabled {
+    background-color: #d3d3d3;
+    color: #808080;
+    cursor:auto;
   }
 
 .error{
