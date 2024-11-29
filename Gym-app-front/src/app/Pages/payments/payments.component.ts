@@ -42,7 +42,7 @@ export class PaymentsComponent implements OnInit {
     this.myForm = this.fb.group({
       NombreCompleto: ['', [Validators.required]],
       FechaIngreso: ['', [Validators.required]],
-      IdPerfil: ['', [Validators.required]],
+      IdPerfil: ['', []],
       IdCliente: ['', []] // Este campo se establece automáticamente con el filtro
     });
 
