@@ -75,7 +75,7 @@ export class ProfileComponent {
             fechaIngreso: data.fechaIngreso.split('T')[0],
             fechaPago: data.fechaPago.split('T')[0],
             idPerfil: idPerfilLabel 
-         
+
 
           });
         } else {
@@ -112,7 +112,7 @@ export class ProfileComponent {
         console.log('Miembro actualizado exitosamente', response);
       },
       error => {
-       error
+      error
       }
     );
   } 
@@ -128,17 +128,17 @@ export class ProfileComponent {
     });
   }
 
- 
-  openModal():void{
-    this.matDialog.open(ModalComponent,{
-      width: '500px',
-      height: '200px',
-      data: {
-        title: '',
-        id: this.memberId
-      }, 
-    })
-    
-  }
+
+openModal(): void {
+  this.matDialog.open(ModalComponent, {
+    width: '80%',  // O puedes usar 'auto' si prefieres que se ajuste al contenido
+    maxWidth: '500px', // Esto limita el ancho máximo
+    height: 'auto',  // Permite que la altura se ajuste según el contenido
+    data: {
+      title: 'DELETE MEMBER', // Puedes agregar el título aquí directamente
+      id: this.memberId
+    },
+  });
+}
 
 }
