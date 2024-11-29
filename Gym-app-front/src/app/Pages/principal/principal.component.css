@@ -116,4 +116,35 @@
     background-color: #1a5276;
 }
 
+ .new-member-container{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
  
+ .register-member-button{
+   font-family: "Poppins", sans-serif;
+        border: none;
+        width: 50%;
+        height: 45px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #0056b3, #00a2ff);
+        color: white;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .register-member-button:hover {
+        background: linear-gradient(45deg, #003f7f, #007acc);
+    }
+ 
+.new-member-container a{
+    font-family: "Poppins", sans-serif;
+    color: white;
+    list-style: none;
+    text-decoration: none;
+}

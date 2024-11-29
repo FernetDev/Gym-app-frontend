@@ -4,12 +4,12 @@ import { NgFor, NgIf, CommonModule, AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddMemberService } from '../../Services/member.service';
 import { Miembro } from '../../Interfaces/miembro';  
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule],
+  imports: [MatPaginatorModule, NgFor, FormsModule, CommonModule,RouterLink,],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css'],
 })
