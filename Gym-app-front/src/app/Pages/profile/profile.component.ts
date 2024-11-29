@@ -116,5 +116,16 @@ export class ProfileComponent {
     );
   } 
 
+  deleteMember(id: number): void {
+    this.memberService.deleteMember(id).subscribe({
+      next: (response) => {
+        console.log('Item eliminado:', response);
+      },
+      error: (error) => {
+        console.error('Error al eliminar el item:', error);
+      },
+    });
+  }
+
   
 }
