@@ -8,7 +8,8 @@
       <div class="group-registro">
         <label>Name of Member</label>
         <input matInput formControlName="NombreCompleto">
-        <div *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched" class="error-message">
+        <div *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched"
+          class="error-message">
         </div>
       </div>
 
@@ -23,13 +24,14 @@
     <div class="form-row">
       <div class="group-registro">
         <label>Profile</label>
-        <input    matInput
-        type="text" placeholder="Choose plan" formControlName="IdPerfil" matInput [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option.value">
-            {{ option.label }}
-          </mat-option>
-        </mat-autocomplete>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose plan</mat-label>
+          <mat-select formControlName="IdPerfil">
+            <mat-option *ngFor="let option of options" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
 
       <div class="group-registro">
