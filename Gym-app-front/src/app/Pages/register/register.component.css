@@ -123,4 +123,26 @@ button:disabled {
     background-color: #ff9800; /* Naranja */
     color: white;
   }
+
+
+
+  
+
+  mat-select{
+    display: flex;
+    margin: 0px;
+    width: 98%;
+    padding: 5px;
+    height: 1.7rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background-color: #E9E9E9;
+    font-size: 14px;
+
+  }
+
+ ::ng-deep .mat-mdc-select ng-tns-c1711764913-1 mat-mdc-select-required mat-mdc-select-empty ng-untouched ng-pristine ng-invalid ng-star-inserted{
+    margin: 0px;
+ }
+  
   

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -10,6 +10,8 @@ import { Miembro } from '../../Interfaces/miembro';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddMemberService } from '../../Services/member.service';
 import { NgFor, NgIf } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-register',
@@ -24,6 +26,8 @@ import { NgFor, NgIf } from '@angular/common';
     MatSelectModule, 
     NgIf,
     NgFor,
+    MatAutocompleteModule,
+    FormsModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
