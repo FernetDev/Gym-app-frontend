@@ -26,8 +26,13 @@ export class AccesoService {
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Cliente/guardar`, objeto)
   }
 
-  login(objeto:Login):Observable<ResponseAcceso>{
-    return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Login`, objeto)
+  login(objeto: Login): Observable<ResponseAcceso> {
+    return this.http.post<ResponseAcceso>(`${this.baseUrl}/Login`, objeto).pipe(
+      ((error) => {
+        console.error('Error en la solicitud:', error);
+        return  error
+      })
+    );
   }
 
   logout() {
