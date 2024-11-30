@@ -35,7 +35,7 @@ export class ModalComponent {
     this.memberService.deleteMember(this.memberId).subscribe({
       next: (response) => {
         console.log('Item eliminado:', response); 
-        this.router.navigate(['dashboard/principal']);  
+        this.router.navigate(['dashboard/members']);  
 
         this.dialogRef.close();
       },
