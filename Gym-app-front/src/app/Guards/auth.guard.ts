@@ -8,7 +8,6 @@ import { PLATFORM_ID } from '@angular/core';
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const accesoService = inject(AccesoService);
-  const platformId = inject(PLATFORM_ID);
 
   // Verifica si estamos en el navegador
   if (typeof window !== 'undefined' && !!localStorage.getItem('token')) {

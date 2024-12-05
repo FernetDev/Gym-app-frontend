@@ -194,22 +194,22 @@
     background-color: #1a5276;
 }
 
-.button-group{
-
+.button-group {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-button{
+button {
     background: linear-gradient(45deg, #0679f5, #00a2ff);
     font-size: 0.8rem;
     color: white;
     border: none;
-    padding: 10px 55px;
+    padding: 10px 30px;
     border-radius: 12px;
     font-weight: bold;
-    cursor: pointer;  
+    cursor: pointer;
     margin-top: 1.3rem;
 }
-
