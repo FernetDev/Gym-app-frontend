@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgFor } from '@angular/common';
 import { MatAutocomplete, MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -36,7 +36,8 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private memberService: AddMemberService,
     private matDialog : MatDialog,
-    private router : Router
+    private router : Router,
+    private snackbar : MatSnackBar
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
@@ -112,6 +113,10 @@ export class ProfileComponent {
     this.memberService.actualizarPago(updatedMember).subscribe(
       response => {
         console.log('Miembro actualizado exitosamente', response);
+        this.snackbar.open('Miembro actualizado correctamente', 'Cerrar', {
+            duration: 3000,
+            panelClass: ['snack-error'], 
+          });
       },
       error => {
       error
