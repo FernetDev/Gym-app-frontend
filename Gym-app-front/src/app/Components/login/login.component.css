@@ -68,6 +68,23 @@ mat-form-field.mat-form-field-appearance-outline .mat-form-field-input {
     background: linear-gradient(45deg, #003f7f, #007acc);
 }
 
+.forgot-password-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #dd1c1c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #c90f0f;
+    text-decoration: underline;
+}
+
 /* Responsivo */
 @media (max-width: 576px) {
     .login-card {
