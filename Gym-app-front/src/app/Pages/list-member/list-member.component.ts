@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'; 
 import { PopupComponent } from '../../popup/popup.component';
 import { MatTableModule } from "@angular/material/table";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-list-member',
@@ -13,7 +14,8 @@ import { MatTableModule } from "@angular/material/table";
     CommonModule, 
     FormsModule, 
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   templateUrl: './list-member.component.html',
   styleUrls: ['./list-member.component.css']
@@ -24,7 +26,7 @@ export class ListMemberComponent {
   selectedRole: string = 'all'; 
   users: any[] = []; 
   roles: string[] = ['Admin', 'Encargado', 'Miembro'];
-  displayedColumns: string[] = ['name', 'role', 'status' ,'actions']; // Columnas visibles en la tabla
+  displayedColumns: string[] = ['name', 'role', 'actions']; // Columnas visibles en la tabla
 
   constructor(private dialog: MatDialog) {
 
@@ -38,33 +40,30 @@ export class ListMemberComponent {
     ];
   }
 
-
-
   // Filtrar usuarios
   getFilteredUsers() {
-    return this.users
-      .filter(user => 
-        user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) && user.role.toLowerCase() !== 'miembro' // Filtra el usuario Miembro y busca nombres
-      );
+    return this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+      user.role.toLowerCase() !== 'miembro' // Filtra el usuario Miembro y busca nombres
+    );
   }
 
   // Abrir Popup
   openPopup(action: string, user: any): void {
-    const data = this.getPopupData(action, user);
+    const popupData = this.getPopupData(action, user);
 
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '400px',
-      data
+      data: popupData
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(`Confirmed action: ${result}`);
-        this.executeAction(result, user.id);
+        this.executeAction(result.action, user.id);
       }
     });
+  
   }
-
   // Información del Popup
   private getPopupData(action: string, user: any) {
     switch (action) {
@@ -102,29 +101,29 @@ export class ListMemberComponent {
         this.removeRole(userId);
         break;
       default:
-        console.log('Unknown action');
+        console.log('Unknown action:', action);
     }
   }
 
   // Métodos de acciones (ya existentes)
   editUser(userId: number) {
-    console.log('Edit user:', userId);
+    console.log('Editing user:', userId);
   }
 
   deleteUser(userId: number) {
-    console.log('Delete user:', userId);
+    console.log('Deleting user:', userId);
   }
 
   addRole(userId: number) {
-    console.log('Add role to user:', userId);
+    console.log('Adding role to user:', userId);
   }
 
   removeRole(userId: number) {
-    console.log('Remove role from user:', userId);
+    console.log('Removing role from user:', userId);
   }
 
   resetPassword(userId: number) {
-    console.log('Reset password for user:', userId);
+    console.log('Resetting password for user:', userId);
   }
 
   // Actualizar el tamaño de página
