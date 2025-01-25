@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgFor } from '@angular/common';
 import { MatAutocomplete, MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -36,7 +36,8 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private memberService: AddMemberService,
     private matDialog : MatDialog,
-    private router : Router
+    private router : Router,
+    private snackBar : MatSnackBar
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
@@ -112,6 +113,11 @@ export class ProfileComponent {
     this.memberService.actualizarPago(updatedMember).subscribe(
       response => {
         console.log('Miembro actualizado exitosamente', response);
+        this.router.navigate(['/dashboard/members']);
+        this.snackBar.open('Miembro actualizado exitosamente.', 'Cerrar', {
+          duration: 4000, 
+          panelClass: ['snack-success'], 
+        });
       },
       error => {
       error
@@ -124,6 +130,10 @@ export class ProfileComponent {
       next: (response) => {
         console.log('Item eliminado:', response);
         this.router.navigate(['/dashboard/members']);
+        this.snackBar.open('Miembro eliminado exitosamente.', 'Cerrar', {
+          duration: 4000, 
+          panelClass: ['snack-success'], 
+        });
       },
       error: (error) => {
         console.error('Error al eliminar el item:', error);

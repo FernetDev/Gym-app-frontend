@@ -8,6 +8,7 @@ import { AddMemberService } from '../../Services/member.service';
 import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal',
@@ -23,6 +24,7 @@ export class ModalComponent {
     private memberService: AddMemberService,
     private route: ActivatedRoute,
     private router: Router,
+    private snackBar : MatSnackBar
 
   ) {
     console.log(this.data.title)
@@ -42,7 +44,11 @@ deleteMember(id: number): void {
   this.memberService.deleteMember(this.memberId).subscribe({
     next: (response) => {
       console.log('Item eliminado:', response); 
-      this.router.navigate(['dashboard/principal']);  
+      this.router.navigate(['dashboard/members']);  
+      this.snackBar.open('Miembro actualizado exitosamente.', 'Cerrar', {
+        duration: 4000, 
+        panelClass: ['snack-success'], 
+      });
 
       this.dialogRef.close();
     },

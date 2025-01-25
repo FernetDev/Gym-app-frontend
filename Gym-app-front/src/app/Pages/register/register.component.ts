@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddMemberService } from '../../Services/member.service';
 import { NgFor, NgIf } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -42,7 +42,7 @@ export class RegisterComponent {
     { label: 'Powerlifter', value: 3 }
   ];
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -76,6 +76,7 @@ export class RegisterComponent {
       this.addMember.registrarCliente(newMember).subscribe(
         (data: any) => {
           console.log('Miembro registrado: ', data);
+          this.router.navigate(['/dashboard/members']);
           this.snackBar.open('Cliente registrado exitosamente.', 'Cerrar', {
             duration: 4000, 
             panelClass: ['snack-success'], 
