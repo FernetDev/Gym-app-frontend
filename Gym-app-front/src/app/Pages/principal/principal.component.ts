@@ -34,7 +34,6 @@ export class PrincipalComponent implements OnInit {
             const vencimiento = new Date(member.fechaVencimiento); 
             if (fechaActual > vencimiento) {
               member.estaPagada = false; 
-               
             }
           });
         

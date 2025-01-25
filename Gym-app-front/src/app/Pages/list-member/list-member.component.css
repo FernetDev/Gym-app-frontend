@@ -1,0 +1,106 @@
+.main-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 1rem auto;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.members-box {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.members-box h2 {
+  font-size: 24px;
+  color: #154360;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.options-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.show-options label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+}
+
+.new-member-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.register-member-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.register-member-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.register-member-button:active {
+  background-color: #004099;
+  transform: translateY(0);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.action-buttons button {
+  color: #007bff;
+  transition: color 0.3s ease, transform 0.2s ease;
+  margin: 10px;
+  width: 100%;
+}
+
+.action-buttons button:hover {
+  color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.action-buttons button:active {
+  color: #004099;
+  transform: translateY(0);
+}
+
+.flex-title{
+  color: #007bff;
+  font-size: 20px;
+  padding: 20px;
+}

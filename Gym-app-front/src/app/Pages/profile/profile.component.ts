@@ -36,8 +36,7 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private memberService: AddMemberService,
     private matDialog : MatDialog,
-    private router : Router,
-    private snackBar : MatSnackBar
+    private router : Router
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
@@ -113,11 +112,6 @@ export class ProfileComponent {
     this.memberService.actualizarPago(updatedMember).subscribe(
       response => {
         console.log('Miembro actualizado exitosamente', response);
-        this.router.navigate(['/dashboard/members']);
-        this.snackBar.open('Miembro actualizado exitosamente.', 'Cerrar', {
-          duration: 4000, 
-          panelClass: ['snack-success'], 
-        });
       },
       error => {
       error

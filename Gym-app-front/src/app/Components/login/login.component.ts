@@ -71,5 +71,8 @@ export class LoginComponent {
     this.router.navigate(['registro']); //Redirige a registro
   }
 
+  onForgotPassword() {
+    this.router.navigate(['forgot-password']); // Redirige a forgot-password
+  }
 
 }

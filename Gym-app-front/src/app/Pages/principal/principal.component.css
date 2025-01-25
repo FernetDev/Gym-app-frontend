@@ -1,6 +1,6 @@
 .main-content {
     width: 80%;
-    height: 40%;
+    height: 100%;
     margin: 0 auto;
     margin-top: 5vh;
     font-family: Arial, sans-serif;
@@ -14,8 +14,8 @@
     max-width: 100%;
     width: 100%;
     height: auto;
+    min-height: 60vh;
 }
-
 
 .members-box h2 {
     font-family: "Poppins", sans-serif;
@@ -58,7 +58,8 @@
     font-size: 14px;
 }
 
-.members-header, .member-info {
+.members-header,
+.member-info {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
@@ -82,10 +83,10 @@
 }
 
 .members-list {
-    list-style-type: none; /* Elimina los puntos de la lista */
+    list-style-type: none;
     padding: 0;
     margin: 0;
-    max-height: 290px;
+    max-height: 500px;
     overflow-y: auto;
 }
 
@@ -116,33 +117,33 @@
     background-color: #1a5276;
 }
 
- .new-member-container{
+.new-member-container {
     height: 10vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
- }
- 
- .register-member-button{
-   font-family: "Poppins", sans-serif;
-        border: none;
-        width: 50%;
-        height: 45px;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        background: linear-gradient(45deg, #0056b3, #00a2ff);
-        color: white;
-        border-radius: 8px;
-        transition: background 0.3s ease;
-    }
+}
 
-    .register-member-button:hover {
-        background: linear-gradient(45deg, #003f7f, #007acc);
-    }
- 
-.new-member-container a{
+.register-member-button {
+    font-family: "Poppins", sans-serif;
+    border: none;
+    width: 50%;
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #0056b3, #00a2ff);
+    color: white;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.register-member-button:hover {
+    background: linear-gradient(45deg, #003f7f, #007acc);
+}
+
+.new-member-container a {
     font-family: "Poppins", sans-serif;
     color: white;
     list-style: none;
@@ -154,9 +155,9 @@
 }
 
 .red-color {
-color: red!important;
+    color: red !important;
 }
 
-.green-color{
-    color: green!important;
+.green-color {
+    color: green !important;
 }
