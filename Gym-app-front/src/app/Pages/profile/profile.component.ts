@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule,NgFor, MatAutocomplete,MatOption,MatAutocompleteModule, ],
+  imports: [FormsModule, ReactiveFormsModule,NgFor, MatAutocomplete,MatOption,MatAutocompleteModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
@@ -36,7 +36,8 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private memberService: AddMemberService,
     private matDialog : MatDialog,
-    private router : Router
+    private router : Router,
+    private snackBar: MatSnackBar
   ) {
     this.myForm = this.fb.group({
       nombreCompleto: ['', Validators.required],  
