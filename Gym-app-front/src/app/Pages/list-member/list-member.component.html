@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="members-box">
-    <h2>Lista de Miembros</h2>
+    <h2>Lista de Usuarios</h2>
 
     <!-- Barra de opciones con filtro y búsqueda -->
     <div class="options-bar">
@@ -18,7 +18,7 @@
       <div class="search-bar">
         <input
           type="text"
-          placeholder="Search user..."
+          placeholder="Buscar..."
           [(ngModel)]="searchTerm" />
       </div>
     </div>
@@ -61,8 +61,8 @@
 
   <!-- Botón para agregar nuevo usuario -->
   <div class="new-member-container">
-    <a routerLink="/dashboard/register" class="register-member-button">
-      Agregar Nuevo Miembro
+    <a routerLink="/dashboard/admin" class="register-member-button">
+      Agregar Nuevo Usuario
     </a>
   </div>
 </div>

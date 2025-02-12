@@ -12,6 +12,7 @@ import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'dashboard', component: DashboardComponent, children: [
       { path: 'members', component: PrincipalComponent },
@@ -19,7 +20,6 @@ export const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'payments', component: PaymentsComponent },
       { path: 'profile/:id', component: ProfileComponent },
-      { path: 'listMember', component: ListMemberComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'users', component: ListMemberComponent }
     ]},
 ];
