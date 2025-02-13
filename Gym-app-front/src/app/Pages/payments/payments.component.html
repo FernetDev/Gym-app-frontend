@@ -4,8 +4,9 @@
     </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" action="">
         <div class="form-row">
-            <div class="form-group">
-              <label for="NombreCompleto">Name of Member</label>
+            <!-- <div class="form-group"> -->
+              <mat-form-field style="display: flex; flex: 1;">
+                <mat-label for="NombreCompleto">Name of Member</mat-label>
                 <input
                   matInput
                   placeholder="Select Member"
@@ -17,23 +18,35 @@
                         {{ member.nombreCompleto }}
                   </mat-option>
                 </mat-autocomplete>
-              <div class="error" *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched">
-                Name is required
-              </div>            
-            </div>
+              </mat-form-field>
+              
+                         
+            <!-- </div> -->
+        </div>
+        <div style="margin-top: -30px; margin-bottom: 30px;">
+          <div class="error" *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched">
+            Name is required
+          </div>
         </div>
         <div class="form-row">
-            <div class="form-group date-group">
-                <label for="date">Date of payment</label>
+            <!-- <div class="form-group"> -->
+              <mat-form-field style="display: flex; flex: 1;">
+                <mat-label>Date of payment</mat-label>
                 <input formControlName="FechaIngreso" id="date" matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <div class="error" *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched">Date is required</div>
-            </div>
-            <div class="form-buttons">
-                <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
-                <button type="button"  (click)="onCancel()" class="cancel-button">Cancel</button>
-            </div>
+              </mat-form-field>
+            <!-- </div> -->
+            
+        </div>
+        <div style="margin-top: -30px; margin-bottom: 30px;">
+          <div class="error" *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched">Date is required</div>
+        </div>
+        <div class="form-row" style="justify-content: flex-end;">
+          <div class="form-buttons">
+            <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
+            <button type="button"  (click)="onCancel()" class="cancel-button">Cancel</button>
+          </div>
         </div>
     </form>
 </div>
