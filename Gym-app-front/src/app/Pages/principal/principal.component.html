@@ -17,21 +17,21 @@
       </div> 
   
       <div class="members-header">
-        <span><strong>Name</strong></span>
-        <span><strong>State</strong></span>
-        <span><strong>Date paid</strong></span>
-        <span><strong>Date expiry</strong></span>
-        <span><strong>Actions</strong></span>
+        <span><strong>Nombre</strong></span>
+        <span><strong>Estado</strong></span>
+        <span><strong>Fecha de pago</strong></span>
+        <span><strong>Fecha de vencimiento</strong></span>
+        <span><strong>Acciones</strong></span>
       </div>
   
       <ul class="members-list">
         <li class="member" *ngFor="let member of getFilteredMembers()">
           <div class="member-info">
             <span>{{ member.nombreCompleto || 'Nombre no disponible' }}</span>
-            <span [ngClass]="member.estaPagada === false ? 'red-color' : 'green-color'">{{ member.estaPagada ? 'Paid' : 'Unpaid' }}</span>
+            <span [ngClass]="member.estaPagada === false ? 'red-color' : 'green-color'">{{ member.estaPagada ? 'Pagado' : 'No pagado' }}</span>
             <span>{{ member.fechaPago ? (member.fechaPago | date:'shortDate') : 'No available date' }}</span>
             <span>{{ member.fechaVencimiento ? (member.fechaVencimiento | date:'shortDate') : 'No available date' }}</span>
-            <button *ngIf="member.idCliente" (click)="verPerfil(member.idCliente)" >Edit</button>
+            <button *ngIf="member.idCliente" (click)="verPerfil(member.idCliente)" >Editar</button>
           </div>
         </li>
       </ul>

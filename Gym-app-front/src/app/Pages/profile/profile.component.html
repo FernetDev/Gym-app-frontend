@@ -10,20 +10,20 @@
     <div class="profile-info">
       <form [formGroup]="myForm" class="profile-form">
         <div class="form-group">
-          <label for="first-name">First Name</label>
+          <label for="first-name">Primer Nombre</label>
           <input type="text" id="first-name"  formControlName="nombreCompleto">
         </div>
         <div class="form-group">
-          <label for="contact">Contact</label>
-          <input type="tel" id="contact" placeholder="Contact Number" formControlName="contactNro">
+          <label for="contact">Contacto</label>
+          <input type="tel" id="contact" placeholder="Numero de Contacto" formControlName="contactNro">
         </div>
         <div class="form-group">
           <label for="description">Email</label>
           <input type="text" formControlName="email">
         </div>
         <div class="form-group">
-          <label>Profile</label>
-          <input type="text" placeholder="Choose plan" aria-label="Number" formControlName="idPerfil" matInput [matAutocomplete]="profileAuto">
+          <label>Perfil</label>
+          <input type="text" placeholder="Elegit Plan" aria-label="Number" formControlName="idPerfil" matInput [matAutocomplete]="profileAuto">
           <mat-autocomplete #profileAuto="matAutocomplete">
             <mat-option *ngFor="let option of options" [value]="option.label">
               {{ option.label }}
@@ -31,21 +31,21 @@
           </mat-autocomplete>
       </div>
         <div class="form-group">
-          <label  for="description">Last payment</label>
+          <label  for="description">Último pago</label>
           <input type="text" [value]="memberData.fechaPago?.split('T')[0]" formControlName="fechaPago" readonly>
 
         </div>
         <div class="form-group">
-          <label for="description">Date expiry</label>
+          <label for="description">Fecha de vencimiento</label>
           <input type="text" [value]="memberData.fechaVencimiento?.split('T')[0]" formControlName="fechaVencimiento">
         </div>
         <div class="form-group">
-          <label for="description">Registered since</label>
+          <label for="description">Registrado desde</label>
           <input type="text" [value]="memberData.fechaIngreso?.split('T')[0]" readonly formControlName="fechaIngreso">
         </div>
         <div class="button-group">
-          <button type="submit" (click)="onSubmit()" class="save-button">Save</button>
-          <button (click)="openModal()">Delete</button>
+          <button type="submit" (click)="onSubmit()" class="save-button">Guardar</button>
+          <button (click)="openModal()">Borrar</button>
         </div>
       </form>
     </div>

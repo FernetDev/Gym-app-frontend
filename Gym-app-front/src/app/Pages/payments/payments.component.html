@@ -1,12 +1,12 @@
 <div class="payments-container">
     <div class="header">
-        <h1>Add Payment</h1>
+        <h1>Agregar Pago</h1>
     </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" action="">
         <div class="form-row">
             <!-- <div class="form-group"> -->
               <mat-form-field style="display: flex; flex: 1;">
-                <mat-label for="NombreCompleto">Name of Member</mat-label>
+                <mat-label for="NombreCompleto">Nombre del Miembro</mat-label>
                 <input
                   matInput
                   placeholder="Select Member"
@@ -25,13 +25,13 @@
         </div>
         <div style="margin-top: -30px; margin-bottom: 30px;">
           <div class="error" *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched">
-            Name is required
+            El nombre es obligatorio
           </div>
         </div>
         <div class="form-row">
             <!-- <div class="form-group"> -->
               <mat-form-field style="display: flex; flex: 1;">
-                <mat-label>Date of payment</mat-label>
+                <mat-label>Fecha de Pago</mat-label>
                 <input formControlName="FechaIngreso" id="date" matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -40,12 +40,12 @@
             
         </div>
         <div style="margin-top: -30px; margin-bottom: 30px;">
-          <div class="error" *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched">Date is required</div>
+          <div class="error" *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched">La fecha es obligatoria</div>
         </div>
         <div class="form-row" style="justify-content: flex-end;">
           <div class="form-buttons">
-            <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
-            <button type="button"  (click)="onCancel()" class="cancel-button">Cancel</button>
+            <button type="submit" [disabled]="myForm.invalid" class="save-button">Guardar</button>
+            <button type="button"  (click)="onCancel()" class="cancel-button">Cancelar</button>
           </div>
         </div>
     </form>

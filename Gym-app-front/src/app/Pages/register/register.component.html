@@ -1,27 +1,27 @@
 <div class="conteiner-general">
   <div class="bienvenida-conteiner">
-    <h1>New member</h1>
+    <h1>Nuevo Miembro</h1>
   </div>
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="registro">
     <div class="form-row">
 
       <div class="group-registro">
         <mat-form-field>
-          <mat-label>Name of Member</mat-label>
+          <mat-label>Nombre del Miembro</mat-label>
           <input matInput formControlName="NombreCompleto">
         </mat-form-field>
         <div *ngIf="myForm.get('NombreCompleto')?.invalid && myForm.get('NombreCompleto')?.touched" class="error-message">
-          Invalid Name
+          Nombre inválido
         </div>
       </div>
 
       <div class="group-registro">
         <mat-form-field>
-          <mat-label>Email</mat-label>
+          <mat-label>Correo Electrónico</mat-label>
           <input matInput formControlName="Email">
         </mat-form-field>
         <div *ngIf="myForm.get('Email')?.invalid && myForm.get('Email')?.touched" class="error-message">
-          Invalid Email
+          Correo inválido
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="form-row">
       <div class="group-registro">
         <mat-form-field>
-          <mat-label>Profile</mat-label>
+          <mat-label>Perfil</mat-label>
           <mat-select formControlName="IdPerfil">
             <mat-option *ngFor="let option of options" [value]="option.value">
               {{ option.label }}
@@ -37,17 +37,17 @@
           </mat-select>
         </mat-form-field>
         <div *ngIf="myForm.get('IdPerfil')?.invalid && myForm.get('IdPerfil')?.touched" class="error-message">
-          Invalid Profile
+          Perfil inválido
         </div>
       </div>
 
       <div class="group-registro">
         <mat-form-field>
-          <mat-label>Contact Number</mat-label>
+          <mat-label>Número de Contacto</mat-label>
           <input matInput formControlName="ContactNro">
         </mat-form-field>
         <div *ngIf="myForm.get('ContactNro')?.invalid && myForm.get('ContactNro')?.touched" class="error-message">
-          Invalid Number
+          Número inválido
         </div>
       </div>
     </div>
@@ -55,20 +55,20 @@
     <div class="form-row">
       <div class="group-registro">
         <mat-form-field style="display: flex; flex: 1;">
-          <mat-label>Date of Join</mat-label>
+          <mat-label>Fecha de Ingreso</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="FechaIngreso" />
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div *ngIf="myForm.get('FechaIngreso')?.invalid && myForm.get('FechaIngreso')?.touched" class="error-message">
-          Invalid Date
+          Fecha inválida
         </div>
       </div>
     </div>
     <div class="form-row" style="justify-content: flex-end;">
       <div class="botones-registro">
-        <button type="submit" [disabled]="myForm.invalid" class="save-button">Save</button>
-        <button type="button" (click)="onCancel()" class="cancel-button">Cancel</button>
+        <button type="submit" [disabled]="myForm.invalid" class="save-button">Guardar</button>
+        <button type="button" (click)="onCancel()" class="cancel-button">Cancelar</button>
       </div>
     </div>
   </form>

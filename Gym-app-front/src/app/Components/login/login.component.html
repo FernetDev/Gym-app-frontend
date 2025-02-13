@@ -9,21 +9,21 @@
                         <input matInput formControlName="correo" />
                     </mat-form-field>
                     <div class="error" *ngIf="formLogin.get('correo')?.invalid && formLogin.get('correo')?.touched">
-                        Email is required
+                       El correo es requerido
                     </div>
                 </div>
                 <div class="input-group">
                     <mat-form-field class="input-custom" appearance="outline">
-                        <mat-label>Password</mat-label>
+                        <mat-label>Contraseña</mat-label>
                         <input matInput formControlName="clave" type="password" />
                     </mat-form-field>
                     <div class="error" *ngIf="formLogin.get('clave')?.invalid && formLogin.get('clave')?.touched">
-                        Password is required
+                        Contraseña es requerida
                     </div>
                 </div>
                 <div class="flex">
                     <button mat-flat-button color="primary" class="login-button" (click)="iniciarSesion()">
-                        Login
+                        Iniciar sesión
                     </button>
                 </div>
                 <div class="forgot-password-container">
