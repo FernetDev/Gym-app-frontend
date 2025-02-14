@@ -1,47 +1,45 @@
 <div class="main-content">
-    <div class="members-box">
-      <h2>Lista de Miembros</h2>
-  
-      <div class="options-bar">
-        <div class="show-options">
-          <label for="show-count">Show:</label>
-          <select id="show-count" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option [value]="'See All'">See All</option> 
-          </select>
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Buscar..." [(ngModel)]="searchTerm">
-        </div>
-      </div> 
-  
-      <div class="members-header">
-        <span><strong>Nombre</strong></span>
-        <span><strong>Estado</strong></span>
-        <span><strong>Fecha de pago</strong></span>
-        <span><strong>Fecha de vencimiento</strong></span>
-        <span><strong>Acciones</strong></span>
+  <div class="members-box">
+    <h2>Lista de Miembros</h2>
+
+    <div class="options-bar">
+      <div class="show-options">
+        <label for="show-count">Show:</label>
+        <select id="show-count" [(ngModel)]="pageSize" (ngModelChange)="setPageSize($event)">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option [value]="'See All'">See All</option> 
+        </select>
       </div>
-  
-      <ul class="members-list">
-        <li class="member" *ngFor="let member of getFilteredMembers()">
-          <div class="member-info">
-            <span>{{ member.nombreCompleto || 'Nombre no disponible' }}</span>
-            <span [ngClass]="member.estaPagada === false ? 'red-color' : 'green-color'">{{ member.estaPagada ? 'Pagado' : 'No pagado' }}</span>
-            <span>{{ member.fechaPago ? (member.fechaPago | date:'shortDate') : 'No available date' }}</span>
-            <span>{{ member.fechaVencimiento ? (member.fechaVencimiento | date:'shortDate') : 'No available date' }}</span>
-            <button *ngIf="member.idCliente" (click)="verPerfil(member.idCliente)" >Editar</button>
-          </div>
-        </li>
-      </ul> 
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar..." [(ngModel)]="searchTerm">
+      </div>
+    </div> 
 
+    <div class="members-header">
+      <span><strong>Nombre</strong></span>
+      <span><strong>Estado</strong></span>
+      <span><strong>Fecha de pago</strong></span>
+      <span><strong>Fecha de vencimiento</strong></span>
+      <span><strong>Acciones</strong></span>
+    </div>
 
-      
+    <ul class="members-list">
+      <li class="member" *ngFor="let member of getFilteredMembers()">
+        <div class="member-info">
+          <span>{{ member.nombreCompleto || 'Nombre no disponible' }}</span>
+          <span [ngClass]="member.estaPagada === false ? 'red-color' : 'green-color'">{{ member.estaPagada ? 'Pagado' : 'No pagado' }}</span>
+          <span>{{ member.fechaPago ? (member.fechaPago | date:'shortDate') : 'No available date' }}</span>
+          <span>{{ member.fechaVencimiento ? (member.fechaVencimiento | date:'shortDate') : 'No available date' }}</span>
+          <button *ngIf="member.idCliente" (click)="verPerfil(member.idCliente)" >Editar</button>
+        </div>
+      </li>
+    </ul>
   </div>
   <div class="new-member-container">
     <button mat-flat-button color="primary" class="register-member-button">
       <a routerLink="/dashboard/register">Agregar Nuevo Miembro</a>
-  </button>
+    </button>
   </div>
+</div>
   

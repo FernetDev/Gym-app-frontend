@@ -6,6 +6,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PopupComponent } from '../../popup/popup.component';
 import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-list-member',
@@ -15,7 +16,8 @@ import { MatIconModule } from "@angular/material/icon";
     FormsModule, 
     MatDialogModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './list-member.component.html',
   styleUrls: ['./list-member.component.css']
@@ -28,7 +30,7 @@ export class ListMemberComponent {
   roles: string[] = ['Admin', 'Encargado', 'Miembro'];
   displayedColumns: string[] = ['name', 'role', 'actions']; // Columnas visibles en la tabla
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router : Router) {
 
     // Ejemplo para probar la lista de usuarios
     this.users = [
@@ -68,7 +70,7 @@ export class ListMemberComponent {
   private getPopupData(action: string, user: any) {
     switch (action) {
       case 'edit':
-        return { title: 'Edit User', message: `You want to edit to ${user.name}?`, action: 'edit' };
+        return { title: 'Edit User', message: `You want to edit ${user.name}?`, action: 'edit' };
       case 'delete':
         return { title: 'Delete User', message: `You want to delete ${user.name}?`, action: 'delete' };
       case 'resetPassword':
@@ -130,5 +132,9 @@ export class ListMemberComponent {
   setPageSize(size: number) {
     this.pageSize = size;
     console.log('Page size set to:', this.pageSize);
+  }
+
+  redirectToAdd(){
+    this.router.navigate(['dashboard/admin/']);
   }
 }

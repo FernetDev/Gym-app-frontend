@@ -78,6 +78,7 @@ mat-form-field.mat-form-field-appearance-outline .mat-form-field-input {
     color: #dd1c1c;
     text-decoration: none;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .forgot-password:hover {
