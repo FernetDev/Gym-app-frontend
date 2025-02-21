@@ -15,34 +15,55 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class PrincipalComponent implements OnInit {
   members: Miembro[] = []; 
-  pageSize: number = 5; 
+  pageSize: number = 10; 
   pageIndex: number = 0; 
   searchTerm: string = '';
   
-  constructor(private memberService: AddMemberService, private router : Router) {}
+  constructor(private memberService: AddMemberService, private router : Router) {
+    // Ejemplo para probar la lista de miembros
+    /*
+        idCliente?: number,
+    nombreCompleto :string,
+    IdPerfil: number,
+    fechaIngreso: string,
+    Email: string,
+    ContactNro: string,
+    fechaPago: string,
+    estaPagada: boolean,
+    fechaVencimiento: string
+    */
+    this.members = [
+      { idCliente: 1, nombreCompleto: 'Fernando Lujan', actividad: 'Fútbol', estaPagada: true, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+      { idCliente: 2, nombreCompleto: 'Balta Sanchez', actividad: 'Zumba', estaPagada: false, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+      { idCliente: 3, nombreCompleto: 'Matáas Leonel', actividad: 'Gym', estaPagada: true, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+      { idCliente: 4, nombreCompleto: 'Enzo Maidana', actividad: 'Crossfit', estaPagada: false, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+      { idCliente: 5, nombreCompleto: 'Lucho Ortiz', actividad: 'Voley', estaPagada: true, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+      { idCliente: 6, nombreCompleto: 'Pedro Pérez', actividad: 'Folclore', estaPagada: true, fechaPago: new Date().toISOString(), fechaVencimiento: new Date().toISOString(), Email: '', ContactNro: '', fechaIngreso: '', IdPerfil: 0 },
+    ];
+  }
 
   ngOnInit(): void {
     this.loadMembers();
   }
   loadMembers(): void {
-    this.memberService.listarMiembros().subscribe(
-      (data: Miembro[]) => {
-        this.members = data;
-          const fechaActual = new Date();
+    // this.memberService.listarMiembros().subscribe(
+    //   (data: Miembro[]) => {
+    //     this.members = data;
+    //       const fechaActual = new Date();
           
-          this.members.forEach(member => {
-            const vencimiento = new Date(member.fechaVencimiento); 
-            if (fechaActual > vencimiento) {
-              member.estaPagada = false; 
-            }
-          });
+    //       this.members.forEach(member => {
+    //         const vencimiento = new Date(member.fechaVencimiento); 
+    //         if (fechaActual > vencimiento) {
+    //           member.estaPagada = false; 
+    //         }
+    //       });
         
-        console.log('Miembros cargados:', this.members);
-      },
-      (error) => {
-        console.error('Error al cargar miembros:', error);
-      }
-    );
+    //     console.log('Miembros cargados:', this.members);
+    //   },
+    //   (error) => {
+    //     console.error('Error al cargar miembros:', error);
+    //   }
+    // );
   }
 
 

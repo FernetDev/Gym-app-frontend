@@ -18,6 +18,7 @@
 
     <div class="members-header">
       <span><strong>Nombre</strong></span>
+      <span><strong>Actividad</strong></span>
       <span><strong>Estado</strong></span>
       <span><strong>Fecha de pago</strong></span>
       <span><strong>Fecha de vencimiento</strong></span>
@@ -28,6 +29,7 @@
       <li class="member" *ngFor="let member of getFilteredMembers()">
         <div class="member-info">
           <span>{{ member.nombreCompleto || 'Nombre no disponible' }}</span>
+          <span>{{ member.actividad }}</span>
           <span [ngClass]="member.estaPagada === false ? 'red-color' : 'green-color'">{{ member.estaPagada ? 'Pagado' : 'No pagado' }}</span>
           <span>{{ member.fechaPago ? (member.fechaPago | date:'shortDate') : 'No available date' }}</span>
           <span>{{ member.fechaVencimiento ? (member.fechaVencimiento | date:'shortDate') : 'No available date' }}</span>

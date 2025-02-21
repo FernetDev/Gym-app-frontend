@@ -69,6 +69,7 @@ export class RegisterComponent {
             new Date(this.myForm.value.FechaIngreso).getMonth() + 1
           )
         ).toISOString(),
+        actividad: 'Fútbol',
       };
 
       console.log('Formulario enviado: ', newMember);

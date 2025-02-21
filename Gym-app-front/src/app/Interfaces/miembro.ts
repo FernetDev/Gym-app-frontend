@@ -7,5 +7,6 @@ export interface Miembro {
     ContactNro: string,
     fechaPago: string,
     estaPagada: boolean,
-    fechaVencimiento: string
+    fechaVencimiento: string,
+    actividad: string
 }
